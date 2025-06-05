@@ -5,12 +5,14 @@ session_start();
 if(isset($_POST["login"])) {
     $_SESSION["nome"] = $_POST["login"];
     $_SESSION["email"] = $_POST["email"];
-    $_SESSION["foto"] = "/Front/img/default-avatar.jpg";
+    $_SESSION["foto"] = "/img/img.png";
+    $_SESSION["status"] = "admin";
 }
 
 $nome = isset($_SESSION["nome"]) ? $_SESSION["nome"] : "";
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
-$foto = isset($_SESSION["foto"]) ? $_SESSION["foto"] : "/Front/img/default-avatar.jpg";
+$foto = isset($_SESSION["foto"]) ? $_SESSION["foto"] : "/img/img.png";
+$status = isset($_SESSION["status"]) ? $_SESSION["status"] : "";
 
 $caminho_foto = $_SERVER["DOCUMENT_ROOT"] . $foto;
 
@@ -38,6 +40,13 @@ if(empty($nome)) {
 <body>
 <header class="animate-in">
   <h1>EventQ</h1>
+  <nav>
+    <ul>
+      <li><a href="visualizarEventos.php"><i class="fas fa-calendar me-2"></i>Visualizar Eventos</a></li>
+      <li><a href="visualizarAtividades.php"><i class="fas fa-tasks me-2"></i>Visualizar Atividades</a></li>
+      <li><a href="visualizarCompeticoes.php"><i class="fas fa-trophy me-2"></i>Visualizar Competições</a></li>
+    </ul>
+  </nav>
   <div class="dropdown">
     <button class="btn btn-outline-light dropdown-toggle user-dropdown-btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
       <img src="<?php echo $foto ?>" alt="User Avatar" class="user-avatar me-3">
@@ -53,25 +62,30 @@ if(empty($nome)) {
   <p class="animate-in">EventQ é a plataforma ideal para gerenciar inscrições, programação, certificados e
     submissões</p>
 </section>
+<?php if($status == "admin"): ?>
 <section class="content">
-  <div class="card animate-in">
-    <i class="fas fa-calendar-plus fa-3x mb-4 text-primary"></i>
-    <h3>Crie eventos com poucos cliques</h3>
-    <p>Configure seu evento em minutos. Personalize datas, categorias, submissões e formas de pagamento com
-      facilidade.</p>
-  </div>
-  <div class="card animate-in">
-    <i class="fas fa-certificate fa-3x mb-4 text-primary"></i>
-    <h3>Certificados automáticos</h3>
-    <p>Gere e envie certificados personalizados para participantes, palestrantes, monitores e avaliadores — sem dor
-      de cabeça.</p>
-  </div>
-  <div class="card animate-in">
-    <i class="fas fa-university fa-3x mb-4 text-primary"></i>
-    <h3>Soluções para instituições</h3>
-    <p>Desde pequenos encontros até grandes congressos multiárea — o EventQ é escalável e preparado para atender
-      universidades, centros de pesquisa e grupos de estudo.</p>
-  </div>
+  <a href="cadastroEve.php" style="text-decoration: none; color: inherit;">
+    <div class="card animate-in">
+      <i class="fas fa-calendar-plus fa-3x mb-4 text-primary"></i>
+      <h3>Cadastrar Evento</h3>
+      <p>Dê o primeiro passo: Cadastre seu evento e comece a organizar tudo em um só lugar.</p>
+    </div>
+  </a>
+  <a href="cadastrarAti.php" style="text-decoration: none; color: inherit;">
+    <div class="card animate-in">
+      <i class="fas fa-certificate fa-3x mb-4 text-primary"></i>
+      <h3>Cadastrar Atividade</h3>
+      <p>Adicione uma nova atividade com título, horário e responsável em poucos passos.</p>
+    </div>
+  </a>
+  <a href="cadastroComp.php" style="text-decoration: none; color: inherit;">
+    <div class="card animate-in">
+      <i class="fas fa-futbol fa-3x mb-4 text-primary"></i>
+      <h3>Cadastrar Competição</h3>
+      <p>Cadastre uma nova competição com todas as informações necessárias para participação e avaliação.</p>
+    </div>
+  </a>
 </section>
+<?php endif; ?>
 </body>
 </html>

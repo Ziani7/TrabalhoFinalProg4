@@ -373,3 +373,12 @@ header nav ul li a:hover {
         font-size: 1.1rem;
     }
 }
+
+select.form-control {
+    appearance: auto;
+    padding-right: 30px;
+}
+
+select.form-control.input-with-icon {
+    padding-left: 40px;
+}

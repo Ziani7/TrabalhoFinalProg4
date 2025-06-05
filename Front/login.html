@@ -19,17 +19,21 @@
                     <h3 class="text-center">Login</h3>
                 </div>
                 <div class="card-body p-4">
-                    <form action="TelaInicialAdmin.php" method="post">
-                        <div class="input-group">
-                            <i class="fas fa-user input-icon"></i>
-                            <input type="text" class="form-control input-with-icon" name="login"
-                                   placeholder="Seu login">
+                    <form action="TelaInicial.php" method="post">
+                        <div class="mb-3">
+                            <label for="login" class="form-label">Login</label>
+                            <div class="input-group">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="login" class="form-control input-with-icon" name="login" placeholder="Seu login">
+                            </div>
                         </div>
 
-                        <div class="input-group">
-                            <i class="fas fa-lock input-icon"></i>
-                            <input type="password" class="form-control input-with-icon" name="senha"
-                                   placeholder="Sua senha">
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" id="senha" class="form-control input-with-icon" name="senha" placeholder="Sua senha">
+                            </div>
                         </div>
 
                         <div class="d-grid gap-2">
