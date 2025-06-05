@@ -6,49 +6,56 @@
     <title>Cadastro de Usuario</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="CSS/estilo.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Front/Css/estilo.css">
 </head>
 <body>
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
     <div class="row w-100 justify-content-center">
         <div class="col-md-6">
             <div class="card animate-in">
-                    <div class="card-header">
-                        <h3 class="text-center">Cadastro</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <form action="../Back/cadastro.php" method="post">
-                            <div class="input-group">
-                                <i class="fas fa-user input-icon"></i>
-                                <input type="text" class="form-control input-with-icon" id="nome" name="nome" placeholder="Seu nome completo">
-                            </div>
+                <div class="card-header">
+                    <h3 class="text-center">Cadastro</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="../Back/cadastro.php" method="post">
+                        <div class="input-group">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" class="form-control input-with-icon" id="nome" name="nome"
+                                   placeholder="Seu nome completo" required>
+                        </div>
 
-                            <div class="input-group">
-                                <i class="fas fa-at input-icon"></i>
-                                <input type="text" class="form-control input-with-icon" id="login" name="login" placeholder="Seu login">
-                            </div>
+                        <div class="input-group">
+                            <i class="fas fa-at input-icon"></i>
+                            <input type="text" class="form-control input-with-icon" id="login" name="login"
+                                   placeholder="Seu login" required>
+                        </div>
 
-                            <div class="input-group">
-                                <i class="fas fa-lock input-icon"></i>
-                                <input type="password" class="form-control input-with-icon" id="senha" name="senha" placeholder="Sua senha">
-                            </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" class="form-control input-with-icon" id="senha" name="senha"
+                                   placeholder="Sua senha" required>
+                        </div>
 
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-user-plus me-2"></i>
-                                    Cadastrar
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="input-group">
+                            <i class="fas fa-image input-icon"></i>
+                            <input type="file" class="form-control input-with-icon" id="imagem" name="imagem">
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-user-plus me-2"></i>
+                                Cadastrar
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-<a href="/Front/index.html" id="btnVoltar" class="btn-voltar">
+</div>
+<a href="index.html" id="btnVoltar" class="btn-voltar">
     <i class="fas fa-arrow-left"></i> Voltar
 </a>
 </body>

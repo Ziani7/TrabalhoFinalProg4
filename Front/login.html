@@ -8,46 +8,48 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/estilo.css">
+    <link rel="stylesheet" href="/Front/Css/estilo.css">
 </head>
 <body>
-    <div class="container min-vh-100 d-flex align-items-center justify-content-center">
-        <div class="row w-100 justify-content-center">
-            <div class="col-md-6">
-                <div class="card animate-in">
-                    <div class="card-header">
-                        <h3 class="text-center">Login</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <form action="../Back/login.php" method="post">
-                            <div class="input-group">
-                                <i class="fas fa-user input-icon"></i>
-                                <input type="text" class="form-control input-with-icon" name="login" placeholder="Seu login">
-                            </div>
-                            
-                            <div class="input-group">
-                                <i class="fas fa-lock input-icon"></i>
-                                <input type="password" class="form-control input-with-icon" name="senha" placeholder="Sua senha">
-                            </div>
-                            
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-sign-in-alt me-2"></i>
-                                    Entrar
-                                </button>
-                                <a href="/TrabFinalProg4/Front/cadastro.html" class="btn btn-outline-primary">
-                                    <i class="fas fa-user-plus me-2"></i>
-                                    Cadastre-se
-                                </a>
-                            </div>
-                        </form>
-                    </div>
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="row w-100 justify-content-center">
+        <div class="col-md-6">
+            <div class="card animate-in">
+                <div class="card-header">
+                    <h3 class="text-center">Login</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="TelaInicialAdmin.php" method="post">
+                        <div class="input-group">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" class="form-control input-with-icon" name="login"
+                                   placeholder="Seu login">
+                        </div>
+
+                        <div class="input-group">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" class="form-control input-with-icon" name="senha"
+                                   placeholder="Sua senha">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>
+                                Entrar
+                            </button>
+                            <a href="cadastro.html" class="btn btn-outline-primary">
+                                <i class="fas fa-user-plus me-2"></i>
+                                Cadastre-se
+                            </a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <a href="/TrabFinalProg4/Front/index.html" id="btnVoltar" class="btn-voltar">
-        <i class="fas fa-arrow-left"></i> Voltar
-    </a>
+</div>
+<a href="index.html" id="btnVoltar" class="btn-voltar">
+    <i class="fas fa-arrow-left"></i> Voltar
+</a>
 </body>
 </html>
