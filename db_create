@@ -1,0 +1,62 @@
+CREATE TABLE `atividade` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `descricao` varchar(200) NOT NULL,
+ `responsavel` varchar(100) NOT NULL,
+ `data` date NOT NULL,
+ `hora_inicio` time NOT NULL,
+ `hora_fim` time NOT NULL,
+ `local` varchar(100) NOT NULL,
+ `tipo` varchar(20) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+atividade_evento	CREATE TABLE `atividade_evento` (
+ `id_atividade` int(11) NOT NULL,
+ `id_evento` int(11) NOT NULL,
+ KEY `id_atividade` (`id_atividade`),
+ KEY `id_evento` (`id_evento`),
+ CONSTRAINT `atividade_evento_ibfk_1` FOREIGN KEY (`id_atividade`) REFERENCES `atividade` (`id`),
+ CONSTRAINT `atividade_evento_ibfk_2` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+evento	CREATE TABLE `evento` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `nome` varchar(100) NOT NULL,
+ `data_inicio` date NOT NULL,
+ `data_final` date NOT NULL,
+ `local` varchar(50) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+evento_usuario	CREATE TABLE `evento_usuario` (
+ `id_usuario` int(11) NOT NULL,
+ `id_evento` int(11) NOT NULL,
+ KEY `id_evento` (`id_evento`),
+ KEY `id_usuario` (`id_usuario`),
+ CONSTRAINT `evento_usuario_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id`),
+ CONSTRAINT `evento_usuario_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+usuario	CREATE TABLE `usuario` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `nome` varchar(100) NOT NULL,
+ `login` varchar(100) NOT NULL,
+ `senha` varchar(100) NOT NULL,
+ `admin` tinyint(1) DEFAULT '0',
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `login` (`login`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+usuario_atividade	CREATE TABLE `usuario_atividade` (
+ `id_usuario` int(11) NOT NULL,
+ `id_atividade` int(11) NOT NULL,
+ `data` date NOT NULL,
+ `hora` time NOT NULL,
+ KEY `id_usuario` (`id_usuario`),
+ KEY `id_atividade` (`id_atividade`),
+ CONSTRAINT `usuario_atividade_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
+ CONSTRAINT `usuario_atividade_ibfk_2` FOREIGN KEY (`id_atividade`) REFERENCES `atividade` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
