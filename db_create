@@ -1,62 +1,60 @@
-CREATE TABLE `atividade` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `descricao` varchar(200) NOT NULL,
- `responsavel` varchar(100) NOT NULL,
- `data` date NOT NULL,
- `hora_inicio` time NOT NULL,
- `hora_fim` time NOT NULL,
- `local` varchar(100) NOT NULL,
- `tipo` varchar(20) NOT NULL,
- PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+-- Tabela: usuario
 
+CREATE TABLE usuario (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  login VARCHAR(100) NOT NULL UNIQUE,
+  senha VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  path_img VARCHAR(255) DEFAULT NULL,
+  admin TINYINT(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-atividade_evento	CREATE TABLE `atividade_evento` (
- `id_atividade` int(11) NOT NULL,
- `id_evento` int(11) NOT NULL,
- KEY `id_atividade` (`id_atividade`),
- KEY `id_evento` (`id_evento`),
- CONSTRAINT `atividade_evento_ibfk_1` FOREIGN KEY (`id_atividade`) REFERENCES `atividade` (`id`),
- CONSTRAINT `atividade_evento_ibfk_2` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+-- Tabela: evento
 
+CREATE TABLE evento (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  data_inicio DATE NOT NULL,
+  data_final DATE NOT NULL,
+  local VARCHAR(100) NOT NULL,
+  organizacao VARCHAR(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-evento	CREATE TABLE `evento` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `nome` varchar(100) NOT NULL,
- `data_inicio` date NOT NULL,
- `data_final` date NOT NULL,
- `local` varchar(50) NOT NULL,
- PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
-evento_usuario	CREATE TABLE `evento_usuario` (
- `id_usuario` int(11) NOT NULL,
- `id_evento` int(11) NOT NULL,
- KEY `id_evento` (`id_evento`),
- KEY `id_usuario` (`id_usuario`),
- CONSTRAINT `evento_usuario_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id`),
- CONSTRAINT `evento_usuario_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+-- Tabela: atividade
 
+CREATE TABLE atividade (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  descricao VARCHAR(200) NOT NULL,
+  responsavel VARCHAR(100) NOT NULL,
+  data DATE NOT NULL,
+  hora_inicio TIME NOT NULL,
+  hora_fim TIME NOT NULL,
+  local VARCHAR(100) NOT NULL,
+  tipo VARCHAR(50) NOT NULL,
+  id_evento INT NOT NULL,
+  FOREIGN KEY (id_evento) REFERENCES evento(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-usuario	CREATE TABLE `usuario` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `nome` varchar(100) NOT NULL,
- `login` varchar(100) NOT NULL,
- `senha` varchar(100) NOT NULL,
- `admin` tinyint(1) DEFAULT '0',
- PRIMARY KEY (`id`),
- UNIQUE KEY `login` (`login`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+-- Tabela: evento_usuario (inscrições)
 
+CREATE TABLE evento_usuario (
+  id_usuario INT NOT NULL,
+  id_evento INT NOT NULL,
+  PRIMARY KEY (id_usuario, id_evento),
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE,
+  FOREIGN KEY (id_evento) REFERENCES evento(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-usuario_atividade	CREATE TABLE `usuario_atividade` (
- `id_usuario` int(11) NOT NULL,
- `id_atividade` int(11) NOT NULL,
- `data` date NOT NULL,
- `hora` time NOT NULL,
- KEY `id_usuario` (`id_usuario`),
- KEY `id_atividade` (`id_atividade`),
- CONSTRAINT `usuario_atividade_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
- CONSTRAINT `usuario_atividade_ibfk_2` FOREIGN KEY (`id_atividade`) REFERENCES `atividade` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+-- Tabela: usuario_atividade (presenças)
+
+CREATE TABLE usuario_atividade (
+  id_usuario INT NOT NULL,
+  id_atividade INT NOT NULL,
+  data DATE NOT NULL,
+  hora TIME NOT NULL,
+  presenca BOOLEAN NOT NULL,
+  PRIMARY KEY (id_usuario, id_atividade),
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE,
+  FOREIGN KEY (id_atividade) REFERENCES atividade(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
