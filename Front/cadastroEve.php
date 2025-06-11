@@ -64,7 +64,7 @@
 
 
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" name="button">
                                 <i class="fas fa-sign-in-alt me-2"></i>
                                 Cadastrar Evento
                             </button>
