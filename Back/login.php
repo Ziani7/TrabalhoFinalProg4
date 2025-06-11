@@ -1,7 +1,7 @@
 <?php
 global $conn;
 session_start();
-require_once __DIR__ . '/conection/conexao.php';
+require_once __DIR__ . '/../conection/conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $login = $_POST['login'];
