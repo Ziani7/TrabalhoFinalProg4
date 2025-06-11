@@ -8,46 +8,7 @@ if(!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
 
 $nome = $_SESSION["nome"];
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
-$foto = isset($_SESSION["foto"]) ? $_SESSION["foto"] : "/img/img.png";
 
-$caminho_foto = $_SERVER["DOCUMENT_ROOT"] . $foto;
-
-if (!file_exists($caminho_foto)) {
-    $foto = "https://ui-avatars.com/api/?name=" . urlencode($nome) . "&background=0D8ABC&color=fff";
-}
-
-$competicoes = [
-    [
-        'id' => 1,
-        'nome' => 'Torneio de Programação',
-        'data' => '2023-11-16',
-        'hora_inicio' => '13:00',
-        'hora_fim' => '18:00',
-        'categoria' => 'Equipes',
-        'local' => 'Laboratório Central',
-        'status' => 'Inscrições Abertas'
-    ],
-    [
-        'id' => 2,
-        'nome' => 'Hackathon de Inovação',
-        'data' => '2023-12-10',
-        'hora_inicio' => '09:00',
-        'hora_fim' => '21:00',
-        'categoria' => 'Equipes',
-        'local' => 'Centro de Tecnologia',
-        'status' => 'Em Breve'
-    ],
-    [
-        'id' => 3,
-        'nome' => 'Olimpíada de Robótica',
-        'data' => '2024-01-15',
-        'hora_inicio' => '10:00',
-        'hora_fim' => '16:00',
-        'categoria' => 'Individual/Equipes',
-        'local' => 'Ginásio Poliesportivo',
-        'status' => 'Planejamento'
-    ]
-];
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -59,7 +20,7 @@ $competicoes = [
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/Front/Css/estilo.css">
+    <link rel="stylesheet" href="Css/estilo.css">
 </head>
 <body>
 
@@ -148,22 +109,5 @@ $competicoes = [
 <a href="TelaInicial.php" id="btnVoltar" class="btn-voltar">
     <i class="fas fa-arrow-left"></i> Voltar
 </a>
-
-<style>
-    .active {
-        color: #0095FF !important;
-        font-weight: bold;
-    }
-    
-    .table {
-        margin-bottom: 0;
-    }
-    
-    .btn-sm {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.875rem;
-        border-radius: 0.2rem;
-    }
-</style>
 </body>
 </html>

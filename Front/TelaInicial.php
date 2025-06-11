@@ -4,8 +4,7 @@ session_start();
 
 if(isset($_POST["login"])) {
     $_SESSION["nome"] = $_POST["login"];
-    $_SESSION["email"] = $_POST["email"];
-    $_SESSION["foto"] = "/img/img.png";
+    $_SESSION["foto"] = "../img/img.png";
     $_SESSION["status"] = "admin";
 }
 
@@ -35,7 +34,7 @@ if(empty($nome)) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/Front/Css/estilo.css">
+  <link rel="stylesheet" href="Css/estilo.css">
 </head>
 <body>
 <header class="animate-in">
@@ -71,7 +70,7 @@ if(empty($nome)) {
       <p>Dê o primeiro passo: Cadastre seu evento e comece a organizar tudo em um só lugar.</p>
     </div>
   </a>
-  <a href="cadastrarAti.php" style="text-decoration: none; color: inherit;">
+  <a href="cadastroAti.php" style="text-decoration: none; color: inherit;">
     <div class="card animate-in">
       <i class="fas fa-certificate fa-3x mb-4 text-primary"></i>
       <h3>Cadastrar Atividade</h3>

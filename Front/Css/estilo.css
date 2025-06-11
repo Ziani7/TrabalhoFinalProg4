@@ -79,6 +79,42 @@ input[type="file"].input-with-icon {
     background: linear-gradient(45deg, #0095FF, #00B4FF);
 }
 
+.btn-danger {
+    background: linear-gradient(45deg, #CC0000, #FF3333);
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.6);
+    background: linear-gradient(45deg, #FF3333, #FF6666);
+}
+
+.btn-warning {
+    background: linear-gradient(45deg, #FF9900, #FFCC00);
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 153, 0, 0.6);
+    background: linear-gradient(45deg, #FFCC00, #FFE066);
+}
+
 .input-group {
     position: relative;
     margin-bottom: 25px;
