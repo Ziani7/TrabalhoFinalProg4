@@ -18,9 +18,9 @@
             $stmt->bindValue(":local", $evento->getLocal());
             $stmt->bindValue(":organizacao", $evento->getOrganizacao());
             if ($stmt->execute()) {
-                header("Location: index.php");
+                header("Location: ../Front/TelaInicial.php?toast=cadastroSucesso");
             } else {
-                header("Location: index.php");
+                header("Location: cadastraEvento.php?toast=cadastroErro");
             }
         }
 }
