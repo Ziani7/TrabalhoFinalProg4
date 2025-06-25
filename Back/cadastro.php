@@ -11,6 +11,7 @@ global $conn;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
+    $cpf = $_POST['cpf'] ?? '';
     $login = $_POST['login'] ?? '';
     $email = $_POST['email'] ?? '';
     $senha = $_POST['senha'] ?? '';
@@ -40,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $stmt = $conn->prepare("INSERT INTO usuario (nome, login, senha, email, path_img) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$nome, $login, $senha, $email, $path_img]);
+        $stmt = $conn->prepare("INSERT INTO usuario (nome, cpf, login, senha, email, path_img) VALUES (?,?, ?, ?, ?, ?)");
+        $stmt->execute([$nome,$cpf, $login, $senha, $email, $path_img]);
 
         header('Location: ../Front/login.html');
         exit;
