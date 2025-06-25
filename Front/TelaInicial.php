@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -21,18 +22,21 @@ if(empty($nome)) {
     header("Location: login.html");
     exit;
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="Css/estilo.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Inicial</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Css/estilo.css">
+  <link rel="stylesheet" href="css/materialize.css">
 </head>
 <body>
 <header class="animate-in">
@@ -84,5 +88,46 @@ if(empty($nome)) {
         </a>
     </section>
 <?php endif; ?>
+<!--
+<script src="Front/JS/jquery-3.3.1.min.js"></script>
+<script src="Front/JS/materialize.js"></script>
+<script src="Front/JS/toast.js"></script>
+
+<script>
+  
+  <?php
+  /*
+        if (isset($_GET['toast'])) { 
+        	switch ($_GET['toast']){
+        		case 'cadastroSucesso': ?>
+        			toast('Evento cadastrado com sucesso'); <?php
+        			break;
+				case 'cadastroErro': ?>
+					toast('Erro ao cadastrar Evento!'); <?php
+					break;
+				case 'deleteSucesso': ?>
+					toast('Carro deletado com sucesso'); <?php 
+					break;
+				case 'deleteErro': ?>
+					toast('Erro ao deletar carro!'); <?php 
+					break;
+				case 'acessoNegado': ?>
+					toast('Acesso Negado!!!'); <?php 
+					break;
+				case 'editSucesso': ?>
+					toast('Carro editado com sucesso!'); <?php 
+					break;
+				case 'editErro': ?>
+					toast('Erro ao editar carro!'); <?php 
+					break;
+				default:?>
+					toast('Acesso Negado!!!'); <?php
+					break;	
+        	}
+        }
+          */       
+    ?>
+</script>
+      -->
 </body>
 </html>
