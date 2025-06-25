@@ -1,0 +1,8 @@
+# Ignorar arquivos de imagem de uploads
+/img/
+
+# Evitar versionamento de imagens individuais
+*.jpg
+*.jpeg
+*.png
+*.jfif
