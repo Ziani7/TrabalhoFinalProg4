@@ -90,12 +90,15 @@ if(empty($nome)) {
   </a>
 </section>
 <?php endif; ?>
+<!--
 <script src="Front/JS/jquery-3.3.1.min.js"></script>
 <script src="Front/JS/materialize.js"></script>
 <script src="Front/JS/toast.js"></script>
 
 <script>
+  
   <?php
+  /*
         if (isset($_GET['toast'])) { 
         	switch ($_GET['toast']){
         		case 'cadastroSucesso': ?>
@@ -123,8 +126,10 @@ if(empty($nome)) {
 					toast('Acesso Negado!!!'); <?php
 					break;	
         	}
-        }       
+        }
+          */       
     ?>
 </script>
+      -->
 </body>
 </html>
