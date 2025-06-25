@@ -8,7 +8,7 @@ CREATE TABLE usuario (
   senha VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   path_img VARCHAR(255) DEFAULT NULL,
-  tipo_usuario TINYINT(1) NOT NULL DEFAULT 0
+  admin TINYINT(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Tabela: evento
