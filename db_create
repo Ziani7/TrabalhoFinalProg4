@@ -8,7 +8,7 @@ CREATE TABLE usuario (
   senha VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   path_img VARCHAR(255) DEFAULT NULL,
-  admin TINYINT(1) NOT NULL DEFAULT 0
+  cargo VARCHAR(255) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Tabela: evento
@@ -19,7 +19,12 @@ CREATE TABLE evento (
   data_inicio DATE NOT NULL,
   data_final DATE NOT NULL,
   local VARCHAR(100) NOT NULL,
-  organizacao VARCHAR(100) NOT NULL
+  organizacao VARCHAR(100) NOT NULL,
+  ativo TINYINT(1) DEFAULT 1,
+  usuario_id INT NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Tabela: atividade
