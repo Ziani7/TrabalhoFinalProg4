@@ -1,17 +1,3 @@
-<?php
-global $conn;
-include_once("Back/conexao.php");
-
-$sql_eventos = "SELECT id, nome FROM evento";
-$result_eventos = $conn->query($sql_eventos);
-
-$eventos = [];
-if ($result_eventos->num_rows > 0) {
-    while($row = $result_eventos->fetch_assoc()) {
-        $eventos[] = $row;
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,19 +86,17 @@ if ($result_eventos->num_rows > 0) {
                             <label for="Tipo" class="form-label">Tipo</label>
                             <div class="input-group">
                                 <i class="fas fa-certificate input-icon"></i>
-                                <select id="Tipo" name="Tipo" class="form-control input-with-icon">
+                                <select id="Tipo" name="tipo" class="form-control input-with-icon">
                                     <option value="">Selecione um Tipo</option>
                                     <option value="palestra">Palestra</option>
-                                    <option value="Oficina">Oficina</option>
-                                    <option value="curso">Curso</option>
-                                    <option value="workshop">Workshop</option>
+                                    <option value="oficina">Oficina</option>
                                 </select>
                             </div>
                         </div>
 
 
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" name="button">
                                 <i class="fas fa-sign-in-alt me-2"></i>
                                 Cadastrar Atividade
                             </button>

@@ -32,6 +32,14 @@
                                 <input type="text" class="form-control input-with-icon" id="nome" name="nome" placeholder="Seu nome completo" required>
                             </div>
                         </div>
+                        
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <div class="input-group">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" class="form-control input-with-icon" id="cpf" name="cpf" placeholder="Apenas os números" required>
+                            </div>
+                        </div>
 
                         <div class="mb-3">
                             <label for="login" class="form-label">Login</label>
@@ -56,6 +64,19 @@
                                 <input type="email" class="form-control input-with-icon" id="email" name="email" placeholder="Seu email" required>
                             </div>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="cargo" class="form-label">Cargo</label>
+                            <div class="input-group">
+                                <i class="fas fa-certificate input-icon"></i>
+                                <select id="cargo" name="cargo" class="form-control input-with-icon">
+                                    <option value="">Selecione seu cargo</option>
+                                    <option value="aluno">Aluno</option>
+                                    <option value="organizador">Organizador</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="mb-3">
                             <label for="avatar" class="form-label">Avatar</label>
                             <div class="input-group">
@@ -63,6 +84,7 @@
                                 <input type="file" class="form-control input-with-icon" id="avatar" name="avatar">
                             </div>
                         </div>
+                        
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">
