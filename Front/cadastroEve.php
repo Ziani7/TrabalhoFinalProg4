@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,8 +63,6 @@
                                 <input type="text" id="local" class="form-control input-with-icon" name="local" placeholder="Local do Evento">
                             </div>
                         </div>
-
-
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary" name="button">

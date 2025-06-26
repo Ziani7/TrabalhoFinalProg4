@@ -12,17 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT * FROM usuario WHERE login = ?");
-    $stmt->execute([$login]);
+    $stmt = $conn->prepare("SELECT * FROM usuario WHERE login = :login");
+    $stmt->bindValue(":login", $login);
+    $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && $senha === $user['senha']) {
         $_SESSION['usuario_id'] = $user['id'];
         $_SESSION['nome'] = $user['nome'];
+        $_SESSION['cpf'] = $user['cpf'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['foto'] = $user['path_img'];
-        $_SESSION['admin'] = $user['admin'];
-        $_SESSION['status'] = $user['admin'] ? "admin" : "comum";
+        $_SESSION['cargo'] = $user['cargo'];
+        
         header('Location: ../front/Telainicial.php');
         exit;
     } else {
