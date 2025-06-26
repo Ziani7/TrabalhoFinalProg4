@@ -7,14 +7,17 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/../conection/conexao.php';
+include_once 'usuario.php';
+include_once 'usuarioDAO.php';
 global $conn;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = $_POST['nome'] ?? '';
-    $cpf = $_POST['cpf'] ?? '';
-    $login = $_POST['login'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $senha = $_POST['senha'] ?? '';
+    $nome = $_POST['nome'];
+    $cpf = $_POST ['cpf'];
+    $login = $_POST['login'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $cargo = $_POST['cargo'];
     $path_img = null;
 
     if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] !== UPLOAD_ERR_NO_FILE) {
@@ -40,9 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    $usuario = new Usuario($nome, $cpf, $login, $email, $senha, $cargo, $path_img);
+    $usuarioDAO = new usuarioDAO();
+    $usuarioDAO->inserir($usuario);
+
     try {
-        $stmt = $conn->prepare("INSERT INTO usuario (nome, cpf, login, senha, email, path_img) VALUES (?,?, ?, ?, ?, ?)");
-        $stmt->execute([$nome,$cpf, $login, $senha, $email, $path_img]);
+        $stmt = $conn->prepare("INSERT INTO usuario (nome, login, senha, email, cargo, path_img) VALUES ()");
+        $stmt->execute([$nome, $login, $senha, $email, $path_img]);
 
         header('Location: ../Front/login.html');
         exit;

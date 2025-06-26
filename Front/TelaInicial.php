@@ -72,7 +72,7 @@ if(empty($nome)) {
                 <p>Dê o primeiro passo: Cadastre seu evento e comece a organizar tudo em um só lugar.</p>
             </div>
         </a>
-        <a href="cadastroAti.php" style="text-decoration: none; color: inherit;">
+        <a href="cadastrarAti.php" style="text-decoration: none; color: inherit;">
             <div class="card animate-in">
                 <i class="fas fa-certificate fa-3x mb-4 text-primary"></i>
                 <h3>Cadastrar Atividade</h3>

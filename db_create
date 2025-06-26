@@ -3,11 +3,12 @@
 CREATE TABLE usuario (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
+  cpf VARCHAR(11) NOT NULL UNIQUE,
   login VARCHAR(100) NOT NULL UNIQUE,
   senha VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   path_img VARCHAR(255) DEFAULT NULL,
-  admin TINYINT(1) NOT NULL DEFAULT 0
+  cargo VARCHAR(255) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Tabela: evento
@@ -18,7 +19,12 @@ CREATE TABLE evento (
   data_inicio DATE NOT NULL,
   data_final DATE NOT NULL,
   local VARCHAR(100) NOT NULL,
-  organizacao VARCHAR(100) NOT NULL
+  organizacao VARCHAR(100) NOT NULL,
+  ativo TINYINT(1) DEFAULT 1,
+  usuario_id INT NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Tabela: atividade
@@ -57,8 +63,5 @@ CREATE TABLE usuario_atividade (
   PRIMARY KEY (id_usuario, id_atividade),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE,
   FOREIGN KEY (id_atividade) REFERENCES atividade(id) ON DELETE CASCADE
-<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-=======
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
->>>>>>> cd4cdaf0bfffe2f6934092aaa974785a1b9fd577
+
