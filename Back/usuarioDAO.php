@@ -13,21 +13,22 @@ class usuarioDAO
 
     function inserir($usuario)
     {
-        $sql = "INSERT INTO usuario (nome, cpf, login, email, senha, cargo, path_img) 
-            VALUES (:nome, :cpf, :login, :email, :senha, :cargo, :path_img)";
+        $sql = "INSERT INTO usuario (nome, cpf, login, email, senha, path_img, cargo) 
+            VALUES (:nome, :cpf, :login, :email, :senha, :path_img, :cargo)";
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(":nome", $usuario->getNome());
         $stmt->bindValue(":cpf", $usuario->getCpf());
         $stmt->bindValue(":login", $usuario->getLogin());
         $stmt->bindValue(":email", $usuario->getEmail());
         $stmt->bindValue(":senha", $usuario->getSenha());
-        $stmt->bindValue(":cargo", $usuario->getCargo());
         $stmt->bindValue(":path_img", $usuario->getPathImg());
+        $stmt->bindValue(":cargo", $usuario->getCargo());
+        
 
         if ($stmt->execute()) {
             header("Location: ../Front/TelaInicial.php?toast=cadastroSucesso");
         } else {
-            header("Location: cadastraUsuario.php?toast=cadastroErro");
+            header("Location: cadastro.php?toast=cadastroErro");
         }
     }
 }

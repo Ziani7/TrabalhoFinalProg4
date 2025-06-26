@@ -8,13 +8,17 @@ class Evento {
     private $dataInicial;
     private $dataFinal;
     private $local;
+    private $ativo;
+    private $usuario_id;
 
-    public function __construct($organizacao, $nome, $dataInicial, $dataFinal, $local) {
+    public function __construct($organizacao, $nome, $dataInicial, $dataFinal, $local, $ativo, $usuario_id) {
         $this->organizacao = $organizacao;
         $this->nome = $nome;
         $this->dataInicial = $dataInicial;
         $this->dataFinal = $dataFinal;
         $this->local = $local;
+        $this->ativo = $ativo;
+        $this->usuario_id = $usuario_id;
     }
 
     public function getId() {
@@ -63,6 +67,22 @@ class Evento {
 
     public function setLocal($local) {
         $this->local = $local;
+    }
+
+     public function getAtivo() {
+        return $this->ativo;
+    }
+
+    public function setAtivo($ativo) {
+        $this->ativo = $ativo;
+    }
+
+     public function getUsuario_id() {
+        return $this->usuario_id;
+    }
+
+    public function setUsuario_id($usuario_id) {
+        $this->usuario_id = $usuario_id;
     }
 }
 

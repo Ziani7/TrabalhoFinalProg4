@@ -9,7 +9,7 @@
     private $cargo;
     private $path_img;
 
-    public function __construct($nome, $cpf, $login, $email, $senha, $cargo, $path_img)
+    public function __construct($nome, $cpf, $login, $email, $senha, $path_img, $cargo)
     {
         $this->nome = $nome;
         $this->cpf = $cpf;

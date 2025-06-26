@@ -11,14 +11,14 @@ include_once 'usuario.php';
 include_once 'usuarioDAO.php';
 global $conn;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['button'])) {
     $nome = $_POST['nome'];
     $cpf = $_POST ['cpf'];
     $login = $_POST['login'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $cargo = $_POST['cargo'];
     $path_img = null;
+    $cargo = $_POST['cargo'];
 
     if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] !== UPLOAD_ERR_NO_FILE) {
         $arquivo = $_FILES['avatar'];
@@ -43,19 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $usuario = new Usuario($nome, $cpf, $login, $email, $senha, $cargo, $path_img);
+    $usuario = new Usuario($nome, $cpf, $login, $email, $senha, $path_img, $cargo);
     $usuarioDAO = new usuarioDAO();
     $usuarioDAO->inserir($usuario);
 
-    try {
-        $stmt = $conn->prepare("INSERT INTO usuario (nome, login, senha, email, cargo, path_img) VALUES ()");
-        $stmt->execute([$nome, $login, $senha, $email, $path_img]);
-
-        header('Location: ../Front/login.html');
-        exit;
-    } catch (PDOException $e) {
-        die("Erro no banco de dados: " . $e->getMessage());
-    }
 } else {
     header('Location: ../Front/cadastro.html');
     exit;
