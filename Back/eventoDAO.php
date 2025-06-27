@@ -36,7 +36,16 @@
             return $eventos;
         }
 
+        function getNomeEventos()
+        {
+            $sql = "SELECT id, nome FROM evento";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->execute();
+            $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $eventos;
+        }
+        
+    }
 
-}
 
 ?>
