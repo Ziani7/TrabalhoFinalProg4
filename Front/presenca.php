@@ -48,7 +48,8 @@ $usuarios = $dao->getUsuariosDaAtividade($id_atividade);
         <div class="col-12">
             <div class="card animate-in">
                 <div class="card-header">
-                    <h3 class="text-center">Lista de Presença: <?= $atividade['descricao'] ?></h3>
+                    <h3 class="text-center">Lista de Presença: <?= $atividade['descricao']
+                        ?></h3>
                 </div>
                 <div class="card-body p-4">
                     <?php if (isset($_GET['sucesso'])): ?>

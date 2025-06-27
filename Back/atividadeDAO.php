@@ -49,18 +49,19 @@ class atividadeDAO
     }
 
 
-    function inscrever($id_usuario, $id_atividade)
-    {
-        $sql = "INSERT INTO usuario_atividade (id_usuario, id_atividade) VALUES (:id_usuario, :id_atividade)";
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(":id_usuario", $id_usuario);
-        $stmt->bindValue(":id_atividade", $id_atividade);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
-        }
+function inscrever($id_usuario, $id_atividade)
+{
+    $sql = "INSERT INTO usuario_atividade (id_usuario, id_atividade, data, hora, presenca) 
+            VALUES (:id_usuario, :id_atividade, null, null, 0)";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->bindValue(":id_usuario", $id_usuario);
+    $stmt->bindValue(":id_atividade", $id_atividade);
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
     }
+}
 
     function verificaInscricao($id_usuario, $id_atividade)
     {
