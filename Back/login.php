@@ -1,7 +1,6 @@
 <?php
-global $conn;
 session_start();
-require_once __DIR__ . '/../conection/conexao.php';
+require_once __DIR__ . '/../Banco/Conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $login = $_POST['login'];
@@ -12,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT * FROM usuario WHERE login = :login");
+    $conexao = Conexao::getConexao();
+    $stmt = $conexao->prepare("SELECT * FROM usuario WHERE login = :login");
     $stmt->bindValue(":login", $login);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         $_SESSION['email'] = $user['email'];
         $_SESSION['foto'] = $user['path_img'];
         $_SESSION['cargo'] = $user['cargo'];
-        
+
         header('Location: ../front/Telainicial.php');
         exit;
     } else {

@@ -6,6 +6,7 @@ if(!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
     header("Location: login.html");
     exit;
 }
+
 $id_evento = $_GET['id'];
 $atividadeDAO = new atividadeDAO();
 $atividades = $atividadeDAO->vizualizar($id_evento);
@@ -64,9 +65,15 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                             <td><?php echo $atividade['responsavel']; ?></td>
                                             <td><?php echo $atividade['local']; ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-success" title="Inscrever">
-                                                    <i >Inscrever-se</i>
-                                                </a>
+                                                <?php if($atividadeDAO->verificaInscricao($_SESSION['usuario_id'], $atividade['id'])): ?>
+                                                    <button class="btn btn-sm btn-secondary" disabled title="Inscrito">
+                                                        Inscrito
+                                                    </button>
+                                                <?php else: ?>
+                                                    <a href="../Back/matriculaAtividade.php?id_usuario=<?php echo $_SESSION['usuario_id']; ?>&id_atividade=<?php echo $atividade['id']; ?>&id_evento=<?php echo $id_evento; ?>" class="btn btn-sm btn-success" title="Inscrever-se">
+                                                        Inscrever-se
+                                                    </a>
+                                                <?php endif; ?>
                                                 <?php if(isset($_SESSION["status"]) && $_SESSION["status"] == "admin"): ?>
                                                 <a href="#" class="btn btn-sm btn-warning" title="Editar">
                                                     <i class="fas fa-edit"></i>

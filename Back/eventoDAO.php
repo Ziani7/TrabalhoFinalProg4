@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include_once __DIR__  . "/../Banco/Conexao.php";
 
     class eventoDAO{
@@ -36,7 +35,16 @@
             return $eventos;
         }
 
+        function getNomeEventos()
+        {
+            $sql = "SELECT id, nome FROM evento";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->execute();
+            $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $eventos;
+        }
+        
+    }
 
-}
 
 ?>

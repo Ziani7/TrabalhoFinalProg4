@@ -1,12 +1,12 @@
 <?php
-global $conn;
-require_once __DIR__ . '/../conection/conexao.php';
+require_once __DIR__ . '/../Banco/Conexao.php';
 header('Content-Type: application/json');
 
 $cpf = $_GET['cpf'] ?? '';
 
 if (!empty($cpf)) {
-    $stmt = $conn->prepare("SELECT nome FROM usuario WHERE cpf = :cpf");
+    $conexao = Conexao::getConexao();
+    $stmt = $conexao->prepare("SELECT nome FROM usuario WHERE cpf = :cpf");
     $stmt->bindParam(':cpf', $cpf);
     $stmt->execute();
 
