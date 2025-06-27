@@ -1,6 +1,4 @@
 <?php
-global $conn;
-include_once __DIR__ . '/../conection/conexao.php';
 include_once "atividade.php";
 include_once "atividadeDAO.php";
 

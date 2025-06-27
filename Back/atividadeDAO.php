@@ -73,4 +73,24 @@ class atividadeDAO
         return $resultado['total'] > 0;
     }
 
+    function existeAtividadeResponsavel($id_usuario)
+    {
+        $sql = "SELECT COUNT(*) as total FROM atividade WHERE id_responsavel = :id_usuario";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(":id_usuario", $id_usuario);
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'] > 0;
+    }
+    function atividadesPorResponsavel($id_responsavel)
+    {
+        $sql = "SELECT * FROM atividade WHERE id_responsavel = :id_responsavel ORDER BY data ASC";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(":id_responsavel", $id_responsavel);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
 }

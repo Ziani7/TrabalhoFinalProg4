@@ -1,12 +1,12 @@
 
 <?php
 session_start();
-
+require_once __DIR__ . '/../Back/atividadeDAO.php';
 $nome = isset($_SESSION["nome"]) ? $_SESSION["nome"] : "";
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 $foto = isset($_SESSION["foto"]) ? $_SESSION["foto"] : "";
 $status = isset($_SESSION["cargo"]) ? $_SESSION["cargo"] : "";
-
+$id_usuario = isset($_SESSION["usuario_id"]) ? $_SESSION["usuario_id"]:"";
 if (empty($foto)) {
   $foto = "https://ui-avatars.com/api/?name=" . urlencode($nome) . "&background=0D8ABC&color=fff";
 } else {
@@ -17,6 +17,9 @@ if (empty($foto)) {
             $foto = "https://ui-avatars.com/api/?name=" . urlencode($nome) . "&background=0D8ABC&color=fff";        }
     }
 }
+
+    $atividadeDAO = new atividadeDAO();
+    $temAtividadesResponsavel = $atividadeDAO->existeAtividadeResponsavel($id_usuario);
 
 if(empty($nome)) {
     header("Location: login.html");
@@ -54,6 +57,10 @@ if(empty($nome)) {
             <?php echo $nome ?>
         </button>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <?php if ($temAtividadesResponsavel): ?>
+                <li><a class="dropdown-item" href="minhasAtividades.php"><i class="fas fa-user me-2"></i>Minhas Atividades</a></li>
+            <?php endif; ?>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../Back/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>
         </ul>
     </div>
