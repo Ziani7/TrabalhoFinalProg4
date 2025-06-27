@@ -43,20 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $usuario = new Usuario($nome, $cpf, $login, $email, $senha, $cargo, $path_img);
+    $usuario = new Usuario($nome, $cpf, $login, $email, $senha,$path_img ,$cargo );
     $usuarioDAO = new usuarioDAO();
     $usuarioDAO->inserir($usuario);
 
-    try {
-        $stmt = $conn->prepare("INSERT INTO usuario (nome, login, senha, email, cargo, path_img) VALUES ()");
-        $stmt->execute([$nome, $login, $senha, $email, $path_img]);
-
-        header('Location: ../Front/login.html');
-        exit;
-    } catch (PDOException $e) {
-        die("Erro no banco de dados: " . $e->getMessage());
-    }
-} else {
-    header('Location: ../Front/cadastro.html');
-    exit;
 }

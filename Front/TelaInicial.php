@@ -5,7 +5,7 @@ session_start();
 $nome = isset($_SESSION["nome"]) ? $_SESSION["nome"] : "";
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 $foto = isset($_SESSION["foto"]) ? $_SESSION["foto"] : "";
-$status = isset($_SESSION["status"]) ? $_SESSION["status"] : "";
+$status = isset($_SESSION["cargo"]) ? $_SESSION["cargo"] : "";
 
 if (empty($foto)) {
   $foto = "https://ui-avatars.com/api/?name=" . urlencode($nome) . "&background=0D8ABC&color=fff";
@@ -63,7 +63,7 @@ if(empty($nome)) {
     <p class="animate-in">EventQ é a plataforma ideal para gerenciar inscrições, programação, certificados e
         submissões</p>
 </section>
-<?php if($status == "admin"): ?>
+<?php if($status == "organizador"): ?>
     <section class="content">
         <a href="cadastroEve.php" style="text-decoration: none; color: inherit;">
             <div class="card animate-in">

@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="Css/estilo.css">
-    <script src="JS/validaDatas.js" ></script>
+    <script src="JS/validaDatas.js"></script>
+    <script src="JS/buscarNome.js"></script>
 </head>
 <body>
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
@@ -27,9 +28,7 @@
                                 <i class="fas fa-certificate input-icon"></i>
                                 <select id="evento" name="evento" class="form-control input-with-icon">
                                     <option value="">Selecione um evento</option>
-                                    <?php foreach ($eventos as $evento): ?>
-                                        <option value="<?php echo $evento["id"]; ?>"><?php echo $evento["nome"]; ?></option>
-                                    <?php endforeach; ?>
+                                        <option value="Seteic 17">Seteic 17</option>
                                 </select>
                             </div>
                         </div>
@@ -41,12 +40,18 @@
                                 <input type="text" id="descricao" class="form-control input-with-icon" name="descricao" placeholder="Descrição da Ativadade">
                             </div>
                         </div>
-
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF do Responsavel</label>
+                            <div class="input-group">
+                                <i class="fas fa-id-card input-icon"></i>
+                                <input type="text" id="cpf" class="form-control input-with-icon" name="cpf" placeholder="CPF do Responsavel">
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <label for="nomeRes" class="form-label">Nome do Responsavel</label>
                             <div class="input-group">
                                 <i class="fa-solid fa-user input-icon"></i>
-                                <input type="text" id="nomeRes" class="form-control input-with-icon" name="nomeRes" placeholder="Nome do Responsavel">
+                                <input type="text" id="nomeRes" class="form-control input-with-icon" name="nomeRes" placeholder="Nome do Responsavel" readonly>
                             </div>
                         </div>
 
@@ -88,8 +93,8 @@
                                 <i class="fas fa-certificate input-icon"></i>
                                 <select id="Tipo" name="tipo" class="form-control input-with-icon">
                                     <option value="">Selecione um Tipo</option>
-                                    <option value="palestra">Palestra</option>
-                                    <option value="oficina">Oficina</option>
+                                    <option value="Palestra">Palestra</option>
+                                    <option value="Oficina">Oficina</option>
                                 </select>
                             </div>
                         </div>

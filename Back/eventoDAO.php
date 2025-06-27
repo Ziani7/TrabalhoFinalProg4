@@ -26,6 +26,17 @@
                 header("Location: cadastraEvento.php?toast=cadastroErro");
             }
         }
+
+        function vizualizar()
+        {
+            $sql = "SELECT * FROM evento";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->execute();
+            $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $eventos;
+        }
+
+
 }
 
 ?>

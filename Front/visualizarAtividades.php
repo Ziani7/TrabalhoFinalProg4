@@ -1,10 +1,13 @@
 <?php
 session_start();
+include_once '../Back/atividadeDAO.php';
 
 if(!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
     header("Location: login.html");
     exit;
 }
+$atividadeDAO = new atividadeDAO();
+$atividades = $atividadeDAO->vizualizar();
 
 $nome = $_SESSION["nome"];
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
@@ -42,6 +45,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                 <thead>
                                     <tr>
                                         <th>Nome da Atividade</th>
+                                        <th>Tipo da Atividade</th>
                                         <th>Data</th>
                                         <th>Horário</th>
                                         <th>Responsável</th>
@@ -52,7 +56,8 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                 <tbody>
                                     <?php foreach ($atividades as $atividade): ?>
                                         <tr>
-                                            <td><?php echo $atividade['nome']; ?></td>
+                                            <td><?php echo $atividade['descricao']; ?></td>
+                                            <td><?php echo $atividade['tipo']; ?></td>
                                             <td><?php echo date('d/m/Y', strtotime($atividade['data'])); ?></td>
                                             <td><?php echo $atividade['hora_inicio'] . ' - ' . $atividade['hora_fim']; ?></td>
                                             <td><?php echo $atividade['responsavel']; ?></td>

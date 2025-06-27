@@ -1,20 +1,27 @@
 <?php
-    include_once "atividade.php";
-    include_once "atividadeDAO.php";
+global $conn;
+include_once __DIR__ . '/../conection/conexao.php';
+include_once "atividade.php";
+include_once "atividadeDAO.php";
+
 
     if(isset($_POST['button'])){
+        $atividadeDAO = new atividadeDAO();
+        $evento = $_POST['evento'];
         $descricao = $_POST['descricao'];
+        $cpf = $_POST['cpf'];
         $nomeRes = $_POST['nomeRes'];
         $date = $_POST['date'];
         $horaInicio = $_POST['horaInicio'];
         $horaFinal = $_POST['horaFinal'];
         $local = $_POST['local'];
         $tipo = $_POST['tipo'];
-        $id_evento = $_POST['id_evento'];
+        $id_evento = $atividadeDAO->busca_IdEvento($evento);
+        $id_responsavel = $atividadeDAO->busca_IdResponsavel($cpf);
 
-        $atividade = new atividade($descricao, $nomeRes, $date, $horaInicio, $horaFinal, $local, $tipo, $id_evento);
+        $atividade = new atividade($descricao, $nomeRes, $date, $horaInicio, $horaFinal, $local, $tipo, $id_evento, $id_responsavel);
         
-        $atividadeDAO = new atividadeDAO();
+
         $atividadeDAO->inserir($atividade);
     }
 ?>

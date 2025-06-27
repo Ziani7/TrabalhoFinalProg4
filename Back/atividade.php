@@ -10,8 +10,9 @@ class Atividade
     private $local;
     private $tipo;
     private $id_evento;
+    private $id_responsavel;
 
-    public function __construct($descricao, $responsavel, $data, $hora_inicio, $hora_fim, $local, $tipo, $id_evento)
+    public function __construct($descricao, $responsavel, $data, $hora_inicio, $hora_fim, $local, $tipo, $id_evento, $id_responsavel)
     {
         $this->descricao = $descricao;
         $this->responsavel = $responsavel;
@@ -21,6 +22,7 @@ class Atividade
         $this->local = $local;
         $this->tipo = $tipo;
         $this->id_evento = $id_evento;
+        $this->id_responsavel = $id_responsavel;
     }
 
     public function getId()
@@ -111,5 +113,13 @@ class Atividade
     public function setIdEvento($id_evento)
     {
         $this->id_evento = $id_evento;
+    }
+    public function getIdResponsavel()
+    {
+        return $this->id_responsavel;
+    }
+    public function setIdResponsavel($id_responsavel)
+    {
+        $this->id_responsavel = $id_responsavel;
     }
 }

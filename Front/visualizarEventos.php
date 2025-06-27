@@ -1,11 +1,12 @@
 <?php
 session_start();
-
+include_once '../Back/eventoDAO.php';
 if(!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
     header("Location: login.html");
     exit;
 }
-
+$eventoDAO = new eventoDAO();
+$eventos = $eventoDAO->vizualizar();
 $nome = $_SESSION["nome"];
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 
@@ -43,6 +44,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                 <thead>
                                     <tr>
                                         <th>Nome do Evento</th>
+                                        <th>Organizador</th>
                                         <th>Data de Início</th>
                                         <th>Data de Término</th>
                                         <th>Local</th>
@@ -53,11 +55,12 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                     <?php foreach ($eventos as $evento): ?>
                                         <tr>
                                             <td><?php echo $evento['nome']; ?></td>
+                                            <td><?php echo $evento['organizacao']; ?></td>
                                             <td><?php echo date('d/m/Y', strtotime($evento['data_inicio'])); ?></td>
-                                            <td><?php echo date('d/m/Y', strtotime($evento['data_fim'])); ?></td>
+                                            <td><?php echo date('d/m/Y', strtotime($evento['data_final'])); ?></td>
                                             <td><?php echo $evento['local']; ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-primary" title="Detalhes">
+                                                <a href="visualizarAtividades.php" class="btn btn-sm btn-primary" title="Detalhes">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                                 <?php if(isset($_SESSION["status"]) && $_SESSION["status"] == "admin"): ?>
