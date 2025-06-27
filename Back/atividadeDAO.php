@@ -20,16 +20,6 @@ class atividadeDAO
         return $id_responsavel['id'];
     }
 
-    function busca_IdEvento($evento)
-    {
-        $sql = "SELECT id FROM evento WHERE nome = :evento";
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindParam(':evento', $evento);
-        $stmt->execute();
-        $id_evento = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $id_evento['id'];
-    }
-
     function inserir($atividade)
     {
         $sql = "INSERT INTO atividade (descricao, responsavel, data, hora_inicio, hora_fim, local, tipo,id_evento,id_responsavel) VALUES 
@@ -50,13 +40,37 @@ class atividadeDAO
             header("Location: cadastraEvento.php?toast=cadastroErro");
         }
     }
-    function vizualizar()
+    function vizualizar($id_evento)
     {
-        $sql = "SELECT * FROM atividade";
+        $sql = "SELECT * FROM atividade WHERE id_evento = :id_evento";
         $stmt = $this->conexao->prepare($sql);
+        $stmt->execute([':id_evento' => $id_evento]); // mais simples e limpo
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    function inscrever($id_usuario, $id_atividade)
+    {
+        $sql = "INSERT INTO usuario_atividade (id_usuario, id_atividade) VALUES (:id_usuario, :id_atividade)";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(":id_usuario", $id_usuario);
+        $stmt->bindValue(":id_atividade", $id_atividade);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function verificaInscricao($id_usuario, $id_atividade)
+    {
+        $sql = "SELECT COUNT(*) as total FROM usuario_atividade WHERE id_usuario = :id_usuario AND id_atividade = :id_atividade";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(":id_usuario", $id_usuario);
+        $stmt->bindValue(":id_atividade", $id_atividade);
         $stmt->execute();
-        $atividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $atividades;
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'] > 0;
     }
 
 }
