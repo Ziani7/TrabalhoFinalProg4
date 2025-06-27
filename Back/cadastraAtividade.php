@@ -7,7 +7,6 @@ include_once "atividadeDAO.php";
 
     if(isset($_POST['button'])){
         $atividadeDAO = new atividadeDAO();
-        $evento = $_POST['evento'];
         $descricao = $_POST['descricao'];
         $cpf = $_POST['cpf'];
         $nomeRes = $_POST['nomeRes'];
@@ -16,7 +15,7 @@ include_once "atividadeDAO.php";
         $horaFinal = $_POST['horaFinal'];
         $local = $_POST['local'];
         $tipo = $_POST['tipo'];
-        $id_evento = $atividadeDAO->busca_IdEvento($evento);
+        $id_evento = $_POST['evento'];
         $id_responsavel = $atividadeDAO->busca_IdResponsavel($cpf);
 
         $atividade = new atividade($descricao, $nomeRes, $date, $horaInicio, $horaFinal, $local, $tipo, $id_evento, $id_responsavel);
