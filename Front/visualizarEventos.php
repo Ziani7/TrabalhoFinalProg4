@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once '../Back/eventoDAO.php';
 if(!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
     header("Location: login.html");
@@ -60,7 +59,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                             <td><?php echo date('d/m/Y', strtotime($evento['data_final'])); ?></td>
                                             <td><?php echo $evento['local']; ?></td>
                                             <td>
-                                                <a href="visualizarAtividades.php" class="btn btn-sm btn-primary" title="Detalhes">
+                                                <a href="visualizarAtividades.php?id=<?= $evento['id'] ?>" class="btn btn-sm btn-primary" title="Detalhes">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                                 <?php if(isset($_SESSION["status"]) && $_SESSION["status"] == "admin"): ?>

@@ -6,8 +6,9 @@ if(!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
     header("Location: login.html");
     exit;
 }
+$id_evento = $_GET['id'];
 $atividadeDAO = new atividadeDAO();
-$atividades = $atividadeDAO->vizualizar();
+$atividades = $atividadeDAO->vizualizar($id_evento);
 
 $nome = $_SESSION["nome"];
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
@@ -63,8 +64,8 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                             <td><?php echo $atividade['responsavel']; ?></td>
                                             <td><?php echo $atividade['local']; ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-primary" title="Detalhes">
-                                                    <i class="fas fa-eye"></i>
+                                                <a href="#" class="btn btn-sm btn-success" title="Inscrever">
+                                                    <i >Inscrever-se</i>
                                                 </a>
                                                 <?php if(isset($_SESSION["status"]) && $_SESSION["status"] == "admin"): ?>
                                                 <a href="#" class="btn btn-sm btn-warning" title="Editar">
@@ -87,7 +88,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
     </div>
 </div>
 
-<a href="TelaInicial.php" id="btnVoltar" class="btn-voltar">
+<a href="visualizarEventos.php" id="btnVoltar" class="btn-voltar">
     <i class="fas fa-arrow-left"></i> Voltar
 </a>
 </body>

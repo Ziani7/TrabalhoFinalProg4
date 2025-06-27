@@ -44,7 +44,6 @@ if(empty($nome)) {
     <nav>
         <ul>
             <li><a href="visualizarEventos.php"><i class="fas fa-calendar me-2"></i>Visualizar Eventos</a></li>
-            <li><a href="visualizarAtividades.php"><i class="fas fa-tasks me-2"></i>Visualizar Atividades</a></li>
             <li><a href="visualizarCompeticoes.php"><i class="fas fa-trophy me-2"></i>Visualizar Competições</a></li>
         </ul>
     </nav>

@@ -50,9 +50,9 @@ class atividadeDAO
             header("Location: cadastraEvento.php?toast=cadastroErro");
         }
     }
-    function vizualizar()
+    function vizualizar($id_evento)
     {
-        $sql = "SELECT * FROM atividade";
+        $sql = "SELECT * FROM atividade where $id_evento = id_evento";;
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
         $atividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
