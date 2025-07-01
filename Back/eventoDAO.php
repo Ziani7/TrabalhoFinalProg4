@@ -43,8 +43,36 @@
             $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $eventos;
         }
-        
+
+            function buscarPorId($id)
+    {
+        $sql = "SELECT * FROM evento WHERE id = :id";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function editar($id, $nome, $dataInicio, $dataFinal, $local) {
+    $sql = "UPDATE evento 
+            SET nome = :nome, data_inicio = :dataInicio, data_final = :dataFinal, local = :local 
+            WHERE id = :id";
+
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->bindValue(":nome", $nome);
+    $stmt->bindValue(":dataInicio", $dataInicio);
+    $stmt->bindValue(":dataFinal", $dataFinal);
+    $stmt->bindValue(":local", $local);
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+    return $stmt->execute();
+}
+public function excluir($id) {
+    $sql = "DELETE FROM evento WHERE id = :id";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+    return $stmt->execute();
+}
+}
 
 
 ?>
