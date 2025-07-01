@@ -29,6 +29,7 @@ if (!$evento) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="Css/estilo.css">
+    <script src="JS/validaDatas.js" ></script>
 </head>
 <body>
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
