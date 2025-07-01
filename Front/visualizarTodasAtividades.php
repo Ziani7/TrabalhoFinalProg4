@@ -1,12 +1,15 @@
 <?php
 session_start();
-include_once '../Back/eventoDAO.php';
+include_once '../Back/atividadeDAO.php';
+
 if(!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
     header("Location: login.html");
     exit;
 }
-$eventoDAO = new eventoDAO();
-$eventos = $eventoDAO->vizualizar();
+
+$atividadeDAO = new atividadeDAO();
+$atividades = $atividadeDAO->vizualizartodos();
+
 $nome = $_SESSION["nome"];
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 
@@ -16,7 +19,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar Eventos</title>
+    <title>Visualizar Atividades</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -24,46 +27,48 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
     <link rel="stylesheet" href="Css/estilo.css">
 </head>
 <body>
-
 <div class="container" style="margin-top: 100px;">
     <div class="row">
         <div class="col-12">
             <div class="card animate-in">
                 <div class="card-header">
-                    <h3 class="text-center">Eventos Disponíveis</h3>
+                    <h3 class="text-center">Atividades Disponíveis</h3>
                 </div>
                 <div class="card-body p-4">
-                    <?php if (empty($eventos)): ?>
+                    <?php if (empty($atividades)): ?>
                         <div class="alert alert-info">
                             <i class="fas fa-info-circle me-2"></i>
-                            Não há eventos cadastrados no momento.
+                            Não há atividades cadastradas no momento.
                         </div>
                     <?php else: ?>
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Nome do Evento</th>
                                         <th>Organizador</th>
-                                        <th>Data de Início</th>
-                                        <th>Data de Término</th>
+                                        <th>Nome do Evento</th>
+                                        <th>Nome da Atividade</th>
+                                        <th>Tipo da Atividade</th>
+                                        <th>Data</th>
+                                        <th>Horário</th>
+                                        <th>Responsável</th>
                                         <th>Local</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($eventos as $evento): ?>
+                                    <?php foreach ($atividades as $atividade): ?>
                                         <tr>
-                                            <td><?php echo $evento['nome']; ?></td>
-                                            <td><?php echo $evento['organizacao']; ?></td>
-                                            <td><?php echo date('d/m/Y', strtotime($evento['data_inicio'])); ?></td>
-                                            <td><?php echo date('d/m/Y', strtotime($evento['data_final'])); ?></td>
-                                            <td><?php echo $evento['local']; ?></td>
+                                            <td><?php echo $atividade['organizacao']; ?></td>
+                                            <td><?php echo $atividade['nome']; ?></td>
+                                            <td><?php echo $atividade['descricao']; ?></td>
+                                            <td><?php echo $atividade['tipo']; ?></td>
+                                            <td><?php echo date('d/m/Y', strtotime($atividade['data'])); ?></td>
+                                            <td><?php echo $atividade['hora_inicio'] . ' - ' . $atividade['hora_fim']; ?></td>
+                                            <td><?php echo $atividade['responsavel']; ?></td>
+                                            <td><?php echo $atividade['local']; ?></td>
                                             <td>
-                                                <a href="visualizarAtividades.php?id=<?php echo $evento['id']; ?>" class="btn btn-sm btn-primary" title="Detalhes">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <?php if(isset($_SESSION["cargo"]) && ($_SESSION["cargo"] == "organizador" || $_SESSION["cargo"] == "admin")): ?>
+                                                <?php if(isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "admin"): ?>
                                                 <a href="#" class="btn btn-sm btn-warning" title="Editar">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
@@ -84,9 +89,8 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
     </div>
 </div>
 
-<a href="TelaInicial.php" id="btnVoltar" class="btn-voltar">
+<a href="telaInicial.php" id="btnVoltar" class="btn-voltar">
     <i class="fas fa-arrow-left"></i> Voltar
 </a>
-
 </body>
 </html>

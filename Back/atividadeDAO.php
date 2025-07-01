@@ -48,6 +48,17 @@ class atividadeDAO
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+function vizualizartodos()
+{
+    $sql = "SELECT a.*, e.nome, e.organizacao 
+            FROM atividade a 
+            JOIN evento e ON a.id_evento = e.id 
+            WHERE e.ativo = 1";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 function inscrever($id_usuario, $id_atividade)
 {
