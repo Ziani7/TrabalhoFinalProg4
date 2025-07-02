@@ -14,6 +14,7 @@ $atividades = $atividadeDAO->atividadesPorResponsavel($id_usuario);
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Minhas Atividades</title>
@@ -26,59 +27,71 @@ $atividades = $atividadeDAO->atividadesPorResponsavel($id_usuario);
 </head>
 
 <body>
-<div class="container" style="margin-top: 100px;">
-    <div class="row">
-        <div class="col-12">
-            <div class="card animate-in">
-                <div class="card-header">
-                    <h3 class="text-center">Minhas Atividades (Como Responsável)</h3>
-                </div>
-                <div class="card-body p-4">
-                    <?php if (empty($atividades)): ?>
-                        <div class="alert alert-info">
-                            <i class="fas fa-info-circle me-2"></i>
-                            Você ainda não é responsável por nenhuma atividade.
-                        </div>
-                    <?php else: ?>
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Descrição</th>
-                                    <th>Tipo</th>
-                                    <th>Data</th>
-                                    <th>Horário</th>
-                                    <th>Local</th>
-                                    <th>Ação</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($atividades as $atividade): ?>
-                                    <tr>
-                                        <td><?= $atividade['descricao'] ?></td>
-                                        <td><?= $atividade['tipo'] ?></td>
-                                        <td><?= date('d/m/Y', strtotime($atividade['data'])) ?></td>
-                                        <td><?= $atividade['hora_inicio'] ?> - <?= $atividade['hora_fim'] ?></td>
-                                        <td><?= $atividade['local'] ?></td>
-                                        <td>
-                                            <a href="presenca.php?id_atividade=<?= $atividade['id'] ?>" class="btn btn-sm btn-primary">
-                                                Lista de Presença
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    <?php endif; ?>
+    <div class="container" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col-12">
+                <div class="card animate-in">
+                    <div class="card-header">
+                        <h3 class="text-center">Minhas Atividades (Como Responsável)</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <?php if (empty($atividades)): ?>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Você ainda não é responsável por nenhuma atividade.
+                            </div>
+                        <?php else: ?>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Descrição</th>
+                                            <th>Tipo</th>
+                                            <th>Data</th>
+                                            <th>Horário</th>
+                                            <th>Local</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($atividades as $atividade): ?>
+                                            <tr>
+                                                <td><?= $atividade['descricao'] ?></td>
+                                                <td><?= $atividade['tipo'] ?></td>
+                                                <td><?= date('d/m/Y', strtotime($atividade['data'])) ?></td>
+                                                <td><?= $atividade['hora_inicio'] ?> - <?= $atividade['hora_fim'] ?></td>
+                                                <td><?= $atividade['local'] ?></td>
+                                                <td>
+                                                    <a href="presenca.php?id_atividade=<?= $atividade['id'] ?>"
+                                                        class="btn btn-sm btn-primary">
+                                                        Lista de Presença
+                                                    </a>
+                                                    <a href="EditarAti.php?idAtividade=<?= $atividade['id'] ?>"
+                                                        class="btn btn-sm btn-warning" title="Editar">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+
+                                                     <a href="../Back/excluirAtividade.php?id=<?php echo $atividade['id']; ?>"
+                                                            class="btn btn-sm btn-danger" title="Excluir"
+                                                            onclick="return confirm('Tem certeza que deseja excluir este evento? Esta ação não poderá ser desfeita.');">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<a href="TelaInicial.php" id="btnVoltar" class="btn-voltar">
-    <i class="fas fa-arrow-left"></i> Voltar
-</a>
+    <a href="TelaInicial.php" id="btnVoltar" class="btn-voltar">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
 </body>
+
 </html>
