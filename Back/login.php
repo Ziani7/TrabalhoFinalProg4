@@ -22,6 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         $_SESSION['nome'] = $user['nome'];
         $_SESSION['cpf'] = $user['cpf'];
         $_SESSION['email'] = $user['email'];
+        $_SESSION['login'] = $user['login'];
+        $_SESSION['senha'] = $user['senha'];
         $_SESSION['foto'] = $user['path_img'];
         $_SESSION['cargo'] = $user['cargo'];
 

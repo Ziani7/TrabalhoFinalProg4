@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 require_once __DIR__ . '/../Back/atividadeDAO.php';
@@ -48,6 +47,9 @@ if(empty($nome)) {
         <ul>
             <li><a href="visualizarEventos.php"><i class="fas fa-calendar me-2"></i>Visualizar Eventos</a></li>
             <li><a href="visualizarCompeticoes.php"><i class="fas fa-trophy me-2"></i>Visualizar Competições</a></li>
+            <?php if($status == "admin"): ?>
+            <li><a href="visualizarTodasAtividades.php"><i class="fas fa-clipboard-list me-2"></i>Visualizar Todas Atividades</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
     <div class="dropdown">
@@ -56,8 +58,9 @@ if(empty($nome)) {
             <?php echo $nome ?>
         </button>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="perfil.php?id_usuario=<?php echo $_SESSION['usuario_id'];?>"><i class="fas fa-user me-2"></i>Meu Perfil</a></li>
             <?php if ($temAtividadesResponsavel): ?>
-                <li><a class="dropdown-item" href="minhasAtividades.php"><i class="fas fa-user me-2"></i>Minhas Atividades</a></li>
+                <li><a class="dropdown-item" href="minhasAtividades.php"><i class="fas fa-clipboard-list me-2"></i>Minhas Atividades</a></li>
             <?php endif; ?>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../Back/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>
@@ -69,7 +72,7 @@ if(empty($nome)) {
     <p class="animate-in">EventQ é a plataforma ideal para gerenciar inscrições, programação, certificados e
         submissões</p>
 </section>
-<?php if($status == "organizador"): ?>
+<?php if($status == "organizador" || $status == "admin"): ?>
     <section class="content">
         <a href="cadastroEve.php" style="text-decoration: none; color: inherit;">
             <div class="card animate-in">
