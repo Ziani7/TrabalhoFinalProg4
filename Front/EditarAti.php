@@ -38,6 +38,8 @@ $cpf = $usuario ? $usuario->getCpf() : '';
     <link rel="stylesheet" href="Css/estilo.css" />
     <script src="JS/validaDatas.js"></script>
     <script src="JS/buscarNome.js"></script>
+    <script src="JS/validaHora.js" defer></script>
+
 </head>
 <body>
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
