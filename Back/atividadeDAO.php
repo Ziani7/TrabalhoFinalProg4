@@ -51,17 +51,6 @@ class atividadeDAO
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-<<<<<<< HEAD
-    function inscrever($id_usuario, $id_atividade)
-    {
-        $sql = "INSERT INTO usuario_atividade 
-                (id_usuario, id_atividade, data, hora, presenca)
-                VALUES (:id_usuario, :id_atividade, null, null, 0)";
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(":id_usuario", $id_usuario);
-        $stmt->bindValue(":id_atividade", $id_atividade);
-        return $stmt->execute();
-=======
 function vizualizartodos()
 {
     $sql = "SELECT a.*, e.nome, e.organizacao 
@@ -85,9 +74,9 @@ function inscrever($id_usuario, $id_atividade)
         return true;
     } else {
         return false;
->>>>>>> c0aae4047a0cc030457d433d444acbd4be06a062
-    }
 
+    }
+}
     function verificaInscricao($id_usuario, $id_atividade)
     {
         $sql = "SELECT COUNT(*) as total FROM usuario_atividade 

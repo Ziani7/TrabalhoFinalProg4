@@ -45,33 +45,14 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-<<<<<<< HEAD
-                                            <th>Nome do Evento</th>
+
+                                           <th>Nome do Evento</th>
                                             <th>Organizador</th>
                                             <th>Data de Início</th>
                                             <th>Data de Término</th>
                                             <th>Local</th>
                                             <th>Ações</th>
-=======
-                                            <td><?php echo $evento['nome']; ?></td>
-                                            <td><?php echo $evento['organizacao']; ?></td>
-                                            <td><?php echo date('d/m/Y', strtotime($evento['data_inicio'])); ?></td>
-                                            <td><?php echo date('d/m/Y', strtotime($evento['data_final'])); ?></td>
-                                            <td><?php echo $evento['local']; ?></td>
-                                            <td>
-                                                <a href="visualizarAtividades.php?id=<?php echo $evento['id']; ?>" class="btn btn-sm btn-primary" title="Detalhes">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <?php if(isset($_SESSION["cargo"]) && ($_SESSION["cargo"] == "organizador" || $_SESSION["cargo"] == "admin")): ?>
-                                                <a href="#" class="btn btn-sm btn-warning" title="Editar">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-sm btn-danger" title="Excluir">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                                <?php endif; ?>
-                                            </td>
->>>>>>> c0aae4047a0cc030457d433d444acbd4be06a062
+
                                         </tr>
                                     </thead>
                                     <tbody>
