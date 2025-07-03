@@ -1,13 +1,17 @@
 <?php
 session_start();
+include_once '../Back/competicaoDAO.php';
 
-if(!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
+if (!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
     header("Location: login.html");
     exit;
 }
 
+$competicaoDAO = new competicaoDAO();
+$competicoes = $competicaoDAO->vizualizar();
+
 $nome = $_SESSION["nome"];
-$email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
+$email = $_SESSION["email"] ?? "";
 
 ?>
 <!DOCTYPE html>
@@ -43,9 +47,9 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                 <thead>
                                     <tr>
                                         <th>Nome da Competição</th>
-                                        <th>Data</th>
-                                        <th>Horário</th>
-                                        <th>Categoria</th>
+                                        <th>Modalidade</th>
+                                        <th>Data Início</th>
+                                        <th>Data Final</th>
                                         <th>Local</th>
                                         <th>Status</th>
                                         <th>Ações</th>
@@ -54,37 +58,30 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                 <tbody>
                                     <?php foreach ($competicoes as $competicao): ?>
                                         <tr>
-                                            <td><?php echo $competicao['nome']; ?></td>
-                                            <td><?php echo date('d/m/Y', strtotime($competicao['data'])); ?></td>
-                                            <td><?php echo $competicao['hora_inicio'] . ' - ' . $competicao['hora_fim']; ?></td>
-                                            <td><?php echo $competicao['categoria']; ?></td>
-                                            <td><?php echo $competicao['local']; ?></td>
+                                            <td><?= htmlspecialchars($competicao['nome']) ?></td>
+                                            <td><?= htmlspecialchars($competicao['modalidade']) ?></td>
+                                            <td><?= date('d/m/Y', strtotime($competicao['data_inicio'])) ?></td>
+                                            <td><?= date('d/m/Y', strtotime($competicao['data_final'])) ?></td>
+                                            <td><?= htmlspecialchars($competicao['local']) ?></td>
                                             <td>
                                                 <?php 
                                                 $status_class = '';
-                                                switch($competicao['status']) {
-                                                    case 'Inscrições Abertas':
-                                                        $status_class = 'text-success';
-                                                        break;
-                                                    case 'Em Breve':
-                                                        $status_class = 'text-warning';
-                                                        break;
-                                                    case 'Planejamento':
-                                                        $status_class = 'text-info';
-                                                        break;
-                                                    case 'Encerrado':
-                                                        $status_class = 'text-secondary';
-                                                        break;
+                                                switch ($competicao['status']) {
+                                                    case 'Inscrições Abertas': $status_class = 'text-success'; break;
+                                                    case 'Em Breve': $status_class = 'text-warning'; break;
+                                                    case 'Planejamento': $status_class = 'text-info'; break;
+                                                    case 'Encerrado': $status_class = 'text-secondary'; break;
                                                 }
                                                 ?>
-                                                <span class="<?php echo $status_class; ?> fw-bold">
-                                                    <?php echo $competicao['status']; ?>
+                                                <span class="<?= $status_class ?> fw-bold">
+                                                    <?= htmlspecialchars($competicao['status']) ?>
                                                 </span>
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-sm btn-primary" title="Detalhes">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
+<<<<<<< HEAD
                                                 <?php if(isset($_SESSION["status"]) && $_SESSION["status"] == "admin"): ?>
                                                 <a href="#" class="btn btn-sm btn-warning" title="Editar">
                                                     <i class="fas fa-edit"></i>
@@ -101,6 +98,15 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                                             onclick="return confirm('Tem certeza que deseja excluir este evento? Esta ação não poderá ser desfeita.');">
                                                             <i class="fas fa-trash"></i>
                                                         </a>
+=======
+                                                <?php if (isset($_SESSION["status"]) && $_SESSION["status"] === "admin"): ?>
+                                                    <a href="#" class="btn btn-sm btn-warning" title="Editar">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-sm btn-danger" title="Excluir">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+>>>>>>> aff62ad2bf8f5b743bd482e54bed097edbaf7c7b
                                                 <?php endif; ?>
                                                 
                                             </td>
@@ -116,8 +122,10 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
     </div>
 </div>
 
-<a href="TelaInicial.php" id="btnVoltar" class="btn-voltar">
+<!-- Botão Voltar padronizado -->
+<a href="TelaInicial.php" id="btnVoltar" class="btn btn-secondary position-fixed bottom-0 start-0 m-4 rounded-pill px-4 py-2 shadow">
     <i class="fas fa-arrow-left"></i> Voltar
 </a>
+
 </body>
 </html>
