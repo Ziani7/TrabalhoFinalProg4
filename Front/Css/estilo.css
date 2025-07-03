@@ -133,8 +133,6 @@ input[type="file"].input-with-icon {
     padding-left: 40px;
 }
 
-
-
 .card::before {
     content: '';
     position: absolute;
@@ -248,7 +246,6 @@ input[type="file"].input-with-icon {
     padding: 20px;
 }
 
-/* Ajuste para telas menores */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
@@ -259,21 +256,17 @@ input[type="file"].input-with-icon {
     }
 }
 
-/* Ajuste para telas muito pequenas */
 @media (max-width: 480px) {
     .card {
         margin: 10px;
     }
 }
 
-/* Garante que o conteúdo não fique muito próximo do botão voltar */
 @media (max-height: 600px) {
     .container {
         margin-top: 60px;
     }
 }
-
-/* Adições ao arquivo estilo.css */
 
 header {
     background: rgba(255, 255, 255, 0.1);

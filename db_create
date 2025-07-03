@@ -40,7 +40,7 @@ CREATE TABLE atividade (
   tipo VARCHAR(50) NOT NULL,
   id_evento INT NOT NULL,
   id_responsavel INT NOT NULL,
-  FOREIGN KEY (id_evento) REFERENCES evento(id) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (id_evento) REFERENCES evento(id) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (id_responsavel) REFERENCES usuario(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -59,8 +59,8 @@ CREATE TABLE evento_usuario (
 CREATE TABLE usuario_atividade (
   id_usuario INT NOT NULL,
   id_atividade INT NOT NULL,
-  data DATE NOT NULL,
-  hora TIME NOT NULL,
+  data DATE NULL,
+  hora TIME NULL,
   presenca BOOLEAN NOT NULL,
   PRIMARY KEY (id_usuario, id_atividade),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE,
