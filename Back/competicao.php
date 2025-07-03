@@ -1,6 +1,6 @@
 <?php
 
-class competicao
+class Competicao
 {
 
 }
