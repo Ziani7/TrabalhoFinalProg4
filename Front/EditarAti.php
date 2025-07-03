@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once '../Back/atividadeDAO.php';
+include_once '../Back/usuarioDAO.php';
 
 if(!isset($_GET['idAtividade']) || empty($_GET['idAtividade'])){
     header("Location: minhasAtividades.php?erro=semId");
@@ -16,6 +17,12 @@ if(!$atividade){
     header("Location: minhasAtividades.php?erro=atividadeNaoEncontrada");
     exit;
 }
+
+
+$usuarioDAO = new usuarioDAO();
+$usuario = $usuarioDAO->buscarPorId($atividade['id_responsavel']);
+
+$cpf = $usuario ? $usuario->getCpf() : '';
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +38,8 @@ if(!$atividade){
     <link rel="stylesheet" href="Css/estilo.css" />
     <script src="JS/validaDatas.js"></script>
     <script src="JS/buscarNome.js"></script>
+    <script src="JS/validaHora.js" defer></script>
+
 </head>
 <body>
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
@@ -59,7 +68,7 @@ if(!$atividade){
                             <div class="input-group">
                                 <i class="fas fa-id-card input-icon"></i>
                                 <input type="text" id="cpf" class="form-control input-with-icon" name="cpf" required
-                                       value="<?php echo htmlspecialchars($atividade['id_responsavel']); ?>">
+                                          value="<?php echo($cpf); ?>">
                             </div>
                         </div>
 

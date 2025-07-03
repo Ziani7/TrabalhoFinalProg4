@@ -77,6 +77,15 @@ function inscrever($id_usuario, $id_atividade)
 
     }
 }
+
+public function desinscrever($id_usuario, $id_atividade) {
+    $sql = "DELETE FROM usuario_atividade WHERE id_usuario = :id_usuario AND id_atividade = :id_atividade";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->bindValue(":id_usuario", $id_usuario);
+    $stmt->bindValue(":id_atividade", $id_atividade);
+    return $stmt->execute();
+}
+
     function verificaInscricao($id_usuario, $id_atividade)
     {
         $sql = "SELECT COUNT(*) as total FROM usuario_atividade 
@@ -141,6 +150,7 @@ public function excluir($idAtividade) {
     $stmt->bindValue(":id", $idAtividade, PDO::PARAM_INT);
     return $stmt->execute();
 }
-
-
 }
+
+
+

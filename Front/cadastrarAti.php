@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="Css/estilo.css">
     <script src="JS/validaDatas.js"></script>
     <script src="JS/buscarNome.js"></script>
+    <script src="JS/validaHora.js" defer></script>
 </head>
 
 <body>
