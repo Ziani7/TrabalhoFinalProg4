@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,91 +10,99 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="Css/estilo.css">
-    <script src="JS/validaDatas.js" ></script>
+    <script src="JS/validaDatas.js"></script>
 </head>
+
 <body>
-<div class="container min-vh-100 d-flex align-items-center justify-content-center">
-    <div class="row w-100 justify-content-center">
-        <div class="col-md-6">
-            <div class="card animate-in">
-                <div class="card-header">
-                    <h3 class="text-center">Cadastro de Competição Esportiva</h3>
-                </div>
+    <div class="container min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="row w-100 justify-content-center">
+            <div class="col-md-6">
+                <div class="card animate-in">
+                    <div class="card-header">
+                        <h3 class="text-center">Cadastro de Competição Esportiva</h3>
+                    </div>
 
-                <div class="card-body p-4">
-                    <form action="../Back/cadastroComp.php" method="post">
-                        <div class="mb-3">
-                            <label for="evento" class="form-label">Evento</label>
-                            <div class="input-group">
-                                <i class="fas fa-certificate input-icon"></i>
-                                <select id="evento" name="evento" class="form-control input-with-icon">
-                                    <option value="">Selecione um evento</option>
-                                    <?php
-                                    include_once "../Back/eventoDAO.php";
-                                    $eventoDAO = new eventoDAO();
-                                    $eventos = $eventoDAO->getNomeEventos();
-                                    foreach ($eventos as $evento):
-                                        echo "<option value='{$evento['id']}'>{$evento['nome']}</option>";
-                                    endforeach;
-                                    ?>
-                                </select>
+                    <div class="card-body p-4">
+                        <form action="../Back/cadastroComp.php" method="post">
+                            <div class="mb-3">
+                                <label for="evento" class="form-label">Evento</label>
+                                <div class="input-group">
+                                    <i class="fas fa-certificate input-icon"></i>
+                                    <select id="evento" name="evento" class="form-control input-with-icon">
+                                        <option value="">Selecione um evento</option>
+                                        <?php
+                                        include_once "../Back/eventoDAO.php";
+                                        $eventoDAO = new eventoDAO();
+                                        $eventos = $eventoDAO->getNomeEventos();
+                                        foreach ($eventos as $evento):
+                                            echo "<option value='{$evento['id']}'>{$evento['nome']}</option>";
+                                        endforeach;
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome da competição</label>
-                            <div class="input-group">
-                                <i class="fas fa-trophy input-icon"></i>
-                                <input type="text" id="nome" class="form-control input-with-icon" name="nome" placeholder="Nome da competição" required>
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome da competição</label>
+                                <div class="input-group">
+                                    <i class="fas fa-trophy input-icon"></i>
+                                    <input type="text" id="nome" class="form-control input-with-icon" name="nome"
+                                        placeholder="Nome da competição" required>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <label for="esporte" class="form-label">Esporte</label>
-                            <div class="input-group">
-                                <i class="fas fa-basketball-ball input-icon"></i>
-                                <input type="text" id="esporte" class="form-control input-with-icon" name="esporte" placeholder="Tipo de esporte" required>
+                            <div class="mb-3">
+                                <label for="esporte" class="form-label">Esporte</label>
+                                <div class="input-group">
+                                    <i class="fas fa-basketball-ball input-icon"></i>
+                                    <input type="text" id="esporte" class="form-control input-with-icon" name="esporte"
+                                        placeholder="Tipo de esporte" required>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <label for="local" class="form-label">Local</label>
-                            <div class="input-group">
-                                <i class="fas fa-map-marker-alt input-icon"></i>
-                                <input type="text" id="local" class="form-control input-with-icon" name="local" placeholder="Local da competição" required>
+                            <div class="mb-3">
+                                <label for="local" class="form-label">Local</label>
+                                <div class="input-group">
+                                    <i class="fas fa-map-marker-alt input-icon"></i>
+                                    <input type="text" id="local" class="form-control input-with-icon" name="local"
+                                        placeholder="Local da competição" required>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <label for="data_inicio" class="form-label">Data de início</label>
-                            <div class="input-group">
-                                <i class="fas fa-calendar-alt input-icon"></i>
-                                <input type="date" id="data_inicio" class="form-control input-with-icon" name="data_inicio" required>
+                            <div class="mb-3">
+                                <label for="dateInicio" class="form-label">Data de início</label>
+                                <div class="input-group">
+                                    <i class="fas fa-calendar-alt input-icon"></i>
+                                    <input type="date" id="dateInicio" class="form-control input-with-icon"
+                                        name="data_inicio" required>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <label for="data_fim" class="form-label">Data de término</label>
-                            <div class="input-group">
-                                <i class="fas fa-calendar-alt input-icon"></i>
-                                <input type="date" id="data_fim" class="form-control input-with-icon" name="data_fim" required>
+                            <div class="mb-3">
+                                <label for="dateFinal" class="form-label">Data de término</label>
+                                <div class="input-group">
+                                    <i class="fas fa-calendar-alt input-icon"></i>
+                                    <input type="date" id="dateFinal" class="form-control input-with-icon"
+                                        name="data_fim" required>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary" name="button">
-                                <i class="fas fa-save me-2"></i>Cadastrar Competição
-                            </button>
-                        </div>
 
-                    </form>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary" name="button">
+                                    <i class="fas fa-save me-2"></i>Cadastrar Competição
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<a href="TelaInicial.php" class="btn-voltar">
-    <i class="fas fa-arrow-left"></i> Voltar
-</a>
+    <a href="TelaInicial.php" class="btn-voltar">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
 </body>
+
 </html>
