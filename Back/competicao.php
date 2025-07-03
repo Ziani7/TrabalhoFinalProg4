@@ -4,6 +4,7 @@ class Competicao
 {
     private $id;
 
+
     private $id_evento;
 
     private $nome;
@@ -87,3 +88,5 @@ public function setStatus($status){
     $this->status = $status;
 }
 }
+
+
