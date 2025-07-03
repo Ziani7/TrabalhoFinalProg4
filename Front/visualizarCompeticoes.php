@@ -81,14 +81,25 @@ $email = $_SESSION["email"] ?? "";
                                                 <a href="#" class="btn btn-sm btn-primary" title="Detalhes">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <?php if (isset($_SESSION["status"]) && $_SESSION["status"] === "admin"): ?>
-                                                    <a href="#" class="btn btn-sm btn-warning" title="Editar">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-sm btn-danger" title="Excluir">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
+                                                <?php if(isset($_SESSION["status"]) && $_SESSION["status"] == "admin"): ?>
+                                                <a href="#" class="btn btn-sm btn-warning" title="Editar">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm btn-danger" title="Excluir">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                                     <a href="Editareve.php?id=<?php echo $evento['id']; ?>"
+                                                            class="btn btn-sm btn-warning" title="Editar">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a href="../Back/excluirEvento.php?id=<?php echo $evento['id']; ?>"
+                                                            class="btn btn-sm btn-danger" title="Excluir"
+                                                            onclick="return confirm('Tem certeza que deseja excluir este evento? Esta ação não poderá ser desfeita.');">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                
                                                 <?php endif; ?>
+                                                
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
