@@ -9,8 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="Css/estilo.css">
-    <script src="JS/addTimes.js" ></script>
-
+    <script src="JS/validaDatas.js" ></script>
 </head>
 <body>
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
@@ -23,6 +22,23 @@
 
                 <div class="card-body p-4">
                     <form action="../Back/cadastroComp" method="post">
+                        <div class="mb-3">
+                            <label for="evento" class="form-label">Evento</label>
+                            <div class="input-group">
+                                <i class="fas fa-certificate input-icon"></i>
+                                <select id="evento" name="evento" class="form-control input-with-icon">
+                                    <option value="">Selecione um evento</option>
+                                    <?php
+                                    include_once "../Back/eventoDAO.php";
+                                    $eventoDAO = new eventoDAO();
+                                    $eventos = $eventoDAO->getNomeEventos();
+                                    foreach ($eventos as $evento):
+                                        echo "<option value='{$evento['id']}'>{$evento['nome']}</option>";
+                                    endforeach;
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome da competição</label>
                             <div class="input-group">
@@ -61,20 +77,6 @@
                                 <i class="fas fa-calendar-alt input-icon"></i>
                                 <input type="date" id="data_fim" class="form-control input-with-icon" name="data_fim" required>
                             </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Times Participantes</label>
-                            <div id="timesContainer">
-                                <div class="input-group mb-2">
-                                    <i class="fas fa-team input-icon"></i>
-                                    <input type="text" class="form-control input-with-icon" name="times[]" placeholder="Nome do time" required>
-                                </div>
-                            </div>
-
-                            <button type="button" class="btn btn-secondary w-100 mb-3" onclick="adicionarTime()">
-                                <i class="fas fa-plus me-2"></i>Adicionar mais times
-                            </button>
                         </div>
 
                         <div class="d-grid gap-2">

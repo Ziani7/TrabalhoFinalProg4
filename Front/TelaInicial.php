@@ -12,6 +12,7 @@ if (empty($foto)) {
     if (strpos($foto, 'http') !== 0 && strpos($foto, '/') !== 0) {
     } else {
         $caminho_foto = $_SERVER["DOCUMENT_ROOT"] . $foto;
+        echo $caminho_foto;
         if (!file_exists($caminho_foto)) {
             $foto = "https://ui-avatars.com/api/?name=" . urlencode($nome) . "&background=0D8ABC&color=fff";        }
     }
