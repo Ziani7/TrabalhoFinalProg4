@@ -49,8 +49,8 @@ CREATE TABLE atividade (
 CREATE TABLE usuario_atividade (
   id_usuario INT NOT NULL,
   id_atividade INT NOT NULL,
-  data DATE NOT NULL,
-  hora TIME NOT NULL,
+  data DATE NULL,
+  hora TIME NULL,
   presenca BOOLEAN NOT NULL,
   PRIMARY KEY (id_usuario, id_atividade),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE,
