@@ -13,16 +13,20 @@ class competicaoDAO
 
 
     function inserir($competicao)
-    { $sql = "INSERT INTO competicao (id_evento,nome,modalidade, local,data_inicio, data_final,) VALUES ( :id_evento, :nome, :modalidade, :local, :data_inicio, :data_final, :ativo, :usuario_id)";
+    { $sql = "INSERT INTO competicao (id_evento,nome,modalidade,local,data_inicio, data_final,status) VALUES ( :id_evento, :nome, :modalidade, :local, :data_inicio, :data_final,:status)";
         $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(":id_evento", $competicao->getIdEvento());
         $stmt->bindValue(":nome", $competicao->getNome());
-        $stmt->bindValue(":data_inicio", $competicao->getDataInicial());
+        $stmt->bindValue(":modalidade", $competicao->getModalidade());
+        $stmt->bindValue(":data_inicio", $competicao->getDataInicio());
         $stmt->bindValue(":data_final", $competicao->getDataFinal());
         $stmt->bindValue(":local", $competicao->getLocal());
-        $stmt->bindValue(":organizacao", $competicao->getOrganizacao());
-        $stmt->bindValue(":ativo", $competicao->getAtivo());
-        $stmt->bindValue("usuario_id", $competicao->getUsuario_id());
-        if ($stmt->execute()) {}
+        $stmt->bindValue(":status", $competicao->getStatus());
+        if($stmt->execute()){
+            header("Location: ../Front/TelaInicial.php?toast=cadastroSucesso");
+        }else{
+            header("Location: cadastraEvento.php?toast=cadastroErro");
+    }
 
     }
 

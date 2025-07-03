@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="card-body p-4">
-                    <form action="../Back/cadastroComp" method="post">
+                    <form action="../Back/cadastroComp.php" method="post">
                         <div class="mb-3">
                             <label for="evento" class="form-label">Evento</label>
                             <div class="input-group">
@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" name="button">
                                 <i class="fas fa-save me-2"></i>Cadastrar Competição
                             </button>
                         </div>
