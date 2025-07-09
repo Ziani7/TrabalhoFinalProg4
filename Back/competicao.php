@@ -20,7 +20,8 @@ class Competicao
 
 
 
-public function __construct($id_evento, $nome, $modalidade, $local, $data_inicio, $data_final, $status){
+public function __construct($id, $id_evento, $nome, $modalidade, $local, $data_inicio, $data_final, $status){
+    $this->id = $id;
     $this->id_evento = $id_evento;
     $this->nome = $nome;
     $this->modalidade = $modalidade;
