@@ -70,4 +70,10 @@ class competicaoDAO
     return $stmt->execute();
 }
 
+public function excluir($id){
+    $sql = "delete from competicao where id = :id";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+    return $stmt->execute();
+}
 }
