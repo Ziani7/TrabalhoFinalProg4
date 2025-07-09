@@ -8,7 +8,7 @@ if (!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
 }
 
 $competicaoDAO = new competicaoDAO();
-$competicoes = $competicaoDAO->vizualizar();
+$competicoes = $competicaoDAO->visualizar();
 
 $nome = $_SESSION["nome"];
 $email = $_SESSION["email"] ?? "";
@@ -81,25 +81,14 @@ $email = $_SESSION["email"] ?? "";
                                                 <a href="#" class="btn btn-sm btn-primary" title="Detalhes">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <?php if(isset($_SESSION["status"]) && $_SESSION["status"] == "admin"): ?>
-                                                <a href="#" class="btn btn-sm btn-warning" title="Editar">
+                                                <?php if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "organizador"): ?>
+                                                <a href="EditarComp.php?id=<?= $competicao['id'] ?>" class="btn btn-sm btn-warning" title="Editar">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                                 <a href="#" class="btn btn-sm btn-danger" title="Excluir">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
-                                                     <a href="Editareve.php?id=<?php echo $evento['id']; ?>"
-                                                            class="btn btn-sm btn-warning" title="Editar">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <a href="../Back/excluirEvento.php?id=<?php echo $evento['id']; ?>"
-                                                            class="btn btn-sm btn-danger" title="Excluir"
-                                                            onclick="return confirm('Tem certeza que deseja excluir este evento? Esta ação não poderá ser desfeita.');">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>
-                                                
                                                 <?php endif; ?>
-                                                
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -113,7 +102,6 @@ $email = $_SESSION["email"] ?? "";
     </div>
 </div>
 
-<!-- Botão Voltar padronizado -->
 <a href="TelaInicial.php" id="btnVoltar" class="btn btn-secondary position-fixed bottom-0 start-0 m-4 rounded-pill px-4 py-2 shadow">
     <i class="fas fa-arrow-left"></i> Voltar
 </a>
