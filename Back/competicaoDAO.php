@@ -18,10 +18,22 @@
         }
     }
 
+include_once __DIR__  . "/../Banco/Conexao.php";
+
+class competicaoDAO
+{
+
+    private $conexao;
+
+    public function __construct()
+    {
+        $this->conexao = Conexao::getConexao();
+    }
 
 
     function inserir($competicao)
-    { $sql = "INSERT INTO competicao (id_evento,nome,modalidade,local,data_inicio, data_final,status) VALUES ( :id_evento, :nome, :modalidade, :local, :data_inicio, :data_final,:status)";
+    {
+        $sql = "INSERT INTO competicao (id_evento,nome,modalidade,local,data_inicio, data_final,status) VALUES ( :id_evento, :nome, :modalidade, :local, :data_inicio, :data_final,:status)";
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(":id_evento", $competicao->getIdEvento());
         $stmt->bindValue(":nome", $competicao->getNome());
@@ -30,12 +42,13 @@
         $stmt->bindValue(":data_final", $competicao->getDataFinal());
         $stmt->bindValue(":local", $competicao->getLocal());
         $stmt->bindValue(":status", $competicao->getStatus());
-        if($stmt->execute()){
+        if ($stmt->execute()) {
             header("Location: ../Front/TelaInicial.php?toast=cadastroSucesso");
-        }else{
+        } else {
             header("Location: cadastraEvento.php?toast=cadastroErro");
-    }
+        }
 
     }
 
->?
+}
+>>>>>>>>> Temporary merge branch 2
