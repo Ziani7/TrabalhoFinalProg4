@@ -73,7 +73,7 @@ $email = $_SESSION["email"] ?? "";
         </div>
     </div>
 
-    <a href="javascript:history.back()" class="btn-voltar">
+    <a href="visualizarCompeticoes.php" class="btn-voltar">
         <i class="fas fa-arrow-left"></i> Voltar
     </a>
 
