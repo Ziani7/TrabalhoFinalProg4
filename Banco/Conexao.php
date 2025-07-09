@@ -6,7 +6,6 @@ class Conexao {
     private static $conexao;
     
     private function __construct() {
-        // Omitir o construtor para que não se instancie essa classe...
     } 
              
     public static function getConexao() {

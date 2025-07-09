@@ -3,6 +3,10 @@
 class Competicao
 {
     private $id;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 11fd36e36a7d972b48c000a7ff31f36767d62bee
 
     private $id_evento;
 
@@ -87,4 +91,10 @@ public function getStatus(){
 public function setStatus($status){
     $this->status = $status;
 }
+<<<<<<< HEAD
 }
+=======
+}
+
+
+>>>>>>> 11fd36e36a7d972b48c000a7ff31f36767d62bee

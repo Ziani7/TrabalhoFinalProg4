@@ -59,7 +59,7 @@ $cpf = $usuario ? $usuario->getCpf() : '';
                             <div class="input-group">
                                 <i class="fa-solid fa-file-lines input-icon"></i>
                                 <input type="text" id="descricao" class="form-control input-with-icon" name="descricao" required
-                                       value="<?php echo htmlspecialchars($atividade['descricao']); ?>">
+                                       value="<?php echo ($atividade['descricao']); ?>">
                             </div>
                         </div>
 
@@ -77,7 +77,7 @@ $cpf = $usuario ? $usuario->getCpf() : '';
                             <div class="input-group">
                                 <i class="fa-solid fa-user input-icon"></i>
                                 <input type="text" id="nomeRes" class="form-control input-with-icon" name="nomeRes" readonly
-                                       value="<?php echo htmlspecialchars($atividade['responsavel']); ?>">
+                                       value="<?php echo ($atividade['responsavel']); ?>">
                             </div>
                         </div>
 
@@ -113,7 +113,7 @@ $cpf = $usuario ? $usuario->getCpf() : '';
                             <div class="input-group">
                                 <i class="fa-solid fa-location-dot input-icon"></i>
                                 <input type="text" id="local" class="form-control input-with-icon" name="local" required
-                                       value="<?php echo htmlspecialchars($atividade['local']); ?>">
+                                       value="<?php echo ($atividade['local']); ?>">
                             </div>
                         </div>
 
