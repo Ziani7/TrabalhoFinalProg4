@@ -12,11 +12,12 @@ if (empty($foto)) {
     if (strpos($foto, 'http') !== 0 && strpos($foto, '/') !== 0) {
     } else {
         $caminho_foto = $_SERVER["DOCUMENT_ROOT"] . $foto;
+        echo $caminho_foto;
         if (!file_exists($caminho_foto)) {
-            $foto = "https://ui-avatars.com/api/?name=" . urlencode($nome) . "&background=0D8ABC&color=fff";        }
+            $foto = "https://ui-avatars.com/api/?name=" . urlencode($nome) . "&background=0D8ABC&color=fff";        
+        }
     }
 }
-
     $atividadeDAO = new atividadeDAO();
     $temAtividadesResponsavel = $atividadeDAO->existeAtividadeResponsavel($id_usuario);
 
@@ -38,7 +39,6 @@ if(empty($nome)) {
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="Css/estilo.css">
-  <link rel="stylesheet" href="css/materialize.css">
 </head>
 <body>
 <header class="animate-in">
@@ -97,46 +97,5 @@ if(empty($nome)) {
         </a>
     </section>
 <?php endif; ?>
-<!--
-<script src="Front/JS/jquery-3.3.1.min.js"></script>
-<script src="Front/JS/materialize.js"></script>
-<script src="Front/JS/toast.js"></script>
-
-<script>
-  
-  <?php
-  /*
-        if (isset($_GET['toast'])) { 
-        	switch ($_GET['toast']){
-        		case 'cadastroSucesso': ?>
-        			toast('Evento cadastrado com sucesso'); <?php
-        			break;
-				case 'cadastroErro': ?>
-					toast('Erro ao cadastrar Evento!'); <?php
-					break;
-				case 'deleteSucesso': ?>
-					toast('Carro deletado com sucesso'); <?php 
-					break;
-				case 'deleteErro': ?>
-					toast('Erro ao deletar carro!'); <?php 
-					break;
-				case 'acessoNegado': ?>
-					toast('Acesso Negado!!!'); <?php 
-					break;
-				case 'editSucesso': ?>
-					toast('Carro editado com sucesso!'); <?php 
-					break;
-				case 'editErro': ?>
-					toast('Erro ao editar carro!'); <?php 
-					break;
-				default:?>
-					toast('Acesso Negado!!!'); <?php
-					break;	
-        	}
-        }
-          */       
-    ?>
-</script>
-      -->
 </body>
 </html>
