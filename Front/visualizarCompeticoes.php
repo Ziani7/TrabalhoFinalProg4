@@ -89,7 +89,7 @@ $email = $_SESSION["email"] ?? "";
                                                 </td>
                                                 <td>
                                                     <a href="cadastrarEquipe.php?id=<?php echo $competicao['id']; ?>"
-                                                        class="btn btn-sm btn-success" title="Cadastrar equipe">
+                                                        class="btn btn-sm btn-success" title="Cadastrar">
                                                         <i class="fas fa-pen-to-square"></i>
                                                     </a>
                                                     <a href="visualizarEquipes.php?id=<?php echo $competicao['id']; ?>"

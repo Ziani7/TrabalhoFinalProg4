@@ -16,20 +16,6 @@
             $competicoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $competicoes;
         }
-    }
-
-include_once __DIR__  . "/../Banco/Conexao.php";
-
-class competicaoDAO
-{
-
-    private $conexao;
-
-    public function __construct()
-    {
-        $this->conexao = Conexao::getConexao();
-    }
-
 
     function inserir($competicao)
     {
@@ -51,4 +37,4 @@ class competicaoDAO
     }
 
 }
->>>>>>>>> Temporary merge branch 2
+

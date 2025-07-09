@@ -114,6 +114,24 @@ input[type="file"].input-with-icon {
     box-shadow: 0 6px 20px rgba(255, 153, 0, 0.6);
     background: linear-gradient(45deg, #FFCC00, #FFE066);
 }
+.btn-success {
+    background: linear-gradient(45deg, #00A65A, #00D67A);
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 166, 90, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 166, 90, 0.6);
+    background: linear-gradient(45deg, #00D67A, #00F090);
+}
+
 
 .input-group {
     position: relative;
