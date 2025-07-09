@@ -61,6 +61,13 @@ $email = $_SESSION["email"] ?? "";
                                         <?php foreach ($equipes as $equipe): ?>
                                             <tr>
                                                 <td><?php echo ($equipe['nome']); ?></td>
+                                                <td>
+                                                    <a href="../Back/excluirEquipe.php?id=<?= $equipe['id']; ?>&id_comp=<?= $id_competicao ?>"
+                                                        class="btn btn-sm btn-danger" title="Excluir"
+                                                        onclick="return confirm('Tem certeza que deseja excluir esta equipe?')">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

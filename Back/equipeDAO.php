@@ -52,5 +52,11 @@ public function buscarPorNomeCompeticao($id_comp, $nome) {
     }
 }
 
+public function excluir($id){
+    $sql = "delete from equipe where id = :id";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+    return $stmt->execute();
+}
 
 }
