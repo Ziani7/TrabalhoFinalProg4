@@ -2,7 +2,6 @@
 session_start();
 include_once '../Back/atividadeDAO.php';
 
-// Verifica se usuário está logado
 if (!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
     header("Location: login.html");
     exit;
@@ -10,7 +9,6 @@ if (!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
 
 $atividadeDAO = new atividadeDAO();
 
-// Trata o cancelamento da inscrição (desinscrever)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     $acao = $_POST['acao'];
     $id_usuario = $_SESSION['usuario_id'] ?? null;
@@ -25,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
         }
 
         if (isset($sucesso) && $sucesso) {
-            // Redireciona para a mesma página para evitar reenvio do form
             header("Location: visualizarAtividades.php?id=" . $id_evento);
             exit;
         } else {

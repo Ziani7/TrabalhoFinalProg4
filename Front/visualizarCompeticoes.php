@@ -88,21 +88,25 @@ $email = $_SESSION["email"] ?? "";
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-primary" title="Detalhes">
-                                                        <i class="fas fa-eye"></i>
+                                                    <a href="cadastrarEquipe.php?id=<?php echo $competicao['id']; ?>"
+                                                        class="btn btn-sm btn-success" title="Cadastrar equipe">
+                                                        <i class="fas fa-pen-to-square"></i>
                                                     </a>
-                                                    <?php if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "organizador"): ?>
-                                                        <a href="EditarComp.php?id=<?= $competicao['id'] ?>"
-                                                            class="btn btn-sm btn-warning" title="Editar">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <a href="../Back/excluirCompeticao.php?id=<?= $competicao['id']; ?>"
-                                                            class="btn btn-sm btn-danger" title="Excluir"
-                                                            onclick="return confirm('Tem certeza que deseja excluir esta competição?')">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>
+                                                    <a href="visualizarEquipes.php?id=<?php echo $competicao['id']; ?>"
+                                                        class="btn btn-sm btn-primary" title="Detalhes">
+                                                        <i class="fas fa-eye"></i>
+                                                        <?php if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "organizador"): ?>
+                                                            <a href="EditarComp.php?id=<?= $competicao['id'] ?>"
+                                                                class="btn btn-sm btn-warning" title="Editar">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <a href="../Back/excluirCompeticao.php?id=<?= $competicao['id']; ?>"
+                                                                class="btn btn-sm btn-danger" title="Excluir"
+                                                                onclick="return confirm('Tem certeza que deseja excluir esta competição?')">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
 
-                                                    <?php endif; ?>
+                                                        <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
