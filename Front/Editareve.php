@@ -49,7 +49,7 @@ if (!$evento) {
                                 <i class="fas fa-building input-icon"></i>
                                 <input type="text" id="organizacao" class="form-control input-with-icon" 
                                        name="organizacao" 
-                                       value="<?php echo htmlspecialchars($evento['organizacao']); ?>" 
+                                       value="<?php echo ($evento['organizacao']); ?>" 
                                        readonly>
                             </div>
                         </div>
@@ -60,7 +60,7 @@ if (!$evento) {
                                 <i class="fas fa-ticket input-icon"></i>
                                 <input type="text" id="nomeEve" class="form-control input-with-icon" 
                                        name="nomeEve" 
-                                       value="<?php echo htmlspecialchars($evento['nome']); ?>">
+                                       value="<?php echo ($evento['nome']); ?>">
                             </div>
                         </div>
 
@@ -90,7 +90,7 @@ if (!$evento) {
                                 <i class="fa-solid fa-location-dot input-icon"></i>
                                 <input type="text" id="local" class="form-control input-with-icon" 
                                        name="local" 
-                                       value="<?php echo htmlspecialchars($evento['local']); ?>">
+                                       value="<?php echo ($evento['local']); ?>">
                             </div>
                         </div>
 

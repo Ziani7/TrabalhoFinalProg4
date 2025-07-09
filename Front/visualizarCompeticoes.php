@@ -60,11 +60,11 @@ $email = $_SESSION["email"] ?? "";
                                     <tbody>
                                         <?php foreach ($competicoes as $competicao): ?>
                                             <tr>
-                                                <td><?= htmlspecialchars($competicao['nome']) ?></td>
-                                                <td><?= htmlspecialchars($competicao['modalidade']) ?></td>
+                                                <td><?= ($competicao['nome']) ?></td>
+                                                <td><?= ($competicao['modalidade']) ?></td>
                                                 <td><?= date('d/m/Y', strtotime($competicao['data_inicio'])) ?></td>
                                                 <td><?= date('d/m/Y', strtotime($competicao['data_final'])) ?></td>
-                                                <td><?= htmlspecialchars($competicao['local']) ?></td>
+                                                <td><?= ($competicao['local']) ?></td>
                                                 <td>
                                                     <?php
                                                     $status_class = '';
@@ -84,7 +84,7 @@ $email = $_SESSION["email"] ?? "";
                                                     }
                                                     ?>
                                                     <span class="<?= $status_class ?> fw-bold">
-                                                        <?= htmlspecialchars($competicao['status']) ?>
+                                                        <?= ($competicao['status']) ?>
                                                     </span>
                                                 </td>
                                                 <td>

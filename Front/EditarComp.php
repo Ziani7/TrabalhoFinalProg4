@@ -47,7 +47,7 @@ $eventos = $eventoDAO->getNomeEventos();
             <div class="card-body">
                 <form action="../Back/editaComp.php" method="post">
                     <input type="hidden" name="id" value="<?php echo (int) $competicao['id']; ?>">
-                    <input type="hidden" name="status" value="<?php echo htmlspecialchars($competicao['status']); ?>">
+                    <input type="hidden" name="status" value="<?php echo ($competicao['status']); ?>">
 
                     <div class="mb-3">
                         <label for="evento" class="form-label">Evento</label>
@@ -56,7 +56,7 @@ $eventos = $eventoDAO->getNomeEventos();
                             <select id="evento" name="evento" class="form-control input-with-icon" required>
                                 <?php foreach ($eventos as $evento): ?>
                                     <option value="<?= $evento['id'] ?>" <?= ($evento['id'] == $competicao['id_evento']) ? 'selected' : '' ?>>
-                                        <?= htmlspecialchars($evento['nome']) ?>
+                                        <?= ($evento['nome']) ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
@@ -68,7 +68,7 @@ $eventos = $eventoDAO->getNomeEventos();
                         <div class="input-group">
                             <i class="fas fa-trophy input-icon"></i>
                             <input type="text" id="nome" class="form-control input-with-icon" name="nome"
-                                value="<?= htmlspecialchars($competicao['nome']); ?>" required>
+                                value="<?= ($competicao['nome']); ?>" required>
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@ $eventos = $eventoDAO->getNomeEventos();
                         <div class="input-group">
                             <i class="fas fa-basketball-ball input-icon"></i>
                             <input type="text" id="modalidade" class="form-control input-with-icon" name="modalidade"
-                                value="<?= htmlspecialchars($competicao['modalidade']); ?>" required>
+                                value="<?= ($competicao['modalidade']); ?>" required>
                         </div>
                     </div>
 
@@ -86,7 +86,7 @@ $eventos = $eventoDAO->getNomeEventos();
                         <div class="input-group">
                             <i class="fas fa-map-marker-alt input-icon"></i>
                             <input type="text" id="local" class="form-control input-with-icon" name="local"
-                                value="<?= htmlspecialchars($competicao['local']); ?>" required>
+                                value="<?= ($competicao['local']); ?>" required>
                         </div>
                     </div>
 
