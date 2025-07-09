@@ -8,7 +8,7 @@
         public function __construct() {
             $this->conexao = Conexao::getConexao();
         }
-        function vizualizar()
+        function visualizar()
         {
             $sql = "SELECT * FROM competicao";
             $stmt = $this->conexao->prepare($sql);
@@ -35,6 +35,5 @@
         }
 
     }
-
 }
 
