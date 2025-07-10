@@ -10,10 +10,17 @@ function gerarCertificados(id) {
 
             function readChunk() {
                 return reader.read().then(({ done, value }) => {
-                    if (done) return;
-                    const text = decoder.decode(value);
-                    output.innerHTML += text;
-                    output.scrollTop = output.scrollHeight;
+                    if (value) {
+                        const text = decoder.decode(value);
+                        output.innerHTML += text;
+                        output.scrollTop = output.scrollHeight;
+                    }
+
+                    if (done) {
+                        output.innerHTML += '\n✅ Certificados gerados e enviados com sucesso!';
+                        return;
+                    }
+
                     return readChunk();
                 });
             }

@@ -32,13 +32,13 @@ $eventos = $eventoDAO->eventoPorDono($id_usuario);
             <div class="col-12">
                 <div class="card animate-in">
                     <div class="card-header">
-                        <h3 class="text-center">Minhas Atividades (Como Responsável)</h3>
+                        <h3 class="text-center">Meus Eventos (Como Dono)</h3>
                     </div>
                     <div class="card-body p-4">
                         <?php if (empty($eventos)): ?>
                             <div class="alert alert-info">
                                 <i class="fas fa-info-circle me-2"></i>
-                                Você ainda não é responsável por nenhuma atividade.
+                                Você ainda não é dono por nenhum Evento.
                             </div>
                         <?php else: ?>
                             <div class="table-responsive">
@@ -85,7 +85,6 @@ $eventos = $eventoDAO->eventoPorDono($id_usuario);
             </div>
         </div>
     </div>
-
     <a href="TelaInicial.php" id="btnVoltar" class="btn-voltar">
         <i class="fas fa-arrow-left"></i> Voltar
     </a>

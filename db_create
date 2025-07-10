@@ -1,5 +1,4 @@
 -- Tabela: usuario
-
 CREATE TABLE usuario (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
@@ -12,7 +11,6 @@ CREATE TABLE usuario (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Tabela: evento
-
 CREATE TABLE evento (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
@@ -20,6 +18,8 @@ CREATE TABLE evento (
   data_final DATE NOT NULL,
   local VARCHAR(100) NOT NULL,
   organizacao VARCHAR(100) NOT NULL,
+  carga_horaria INT NOT NULL,
+  presenca_minima INT NOT NULL,
   ativo TINYINT(1) DEFAULT 1,
   usuario_id INT NOT NULL,
   FOREIGN KEY (usuario_id) REFERENCES usuario(id)
@@ -28,7 +28,6 @@ CREATE TABLE evento (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Tabela: atividade
-
 CREATE TABLE atividade (
   id INT AUTO_INCREMENT PRIMARY KEY,
   descricao VARCHAR(200) NOT NULL,
@@ -40,12 +39,15 @@ CREATE TABLE atividade (
   tipo VARCHAR(50) NOT NULL,
   id_evento INT NOT NULL,
   id_responsavel INT NOT NULL,
-  FOREIGN KEY (id_evento) REFERENCES evento(id) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (id_responsavel) REFERENCES usuario(id) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (id_evento) REFERENCES evento(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (id_responsavel) REFERENCES usuario(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Tabela: usuario_atividade (presenças)
-
 CREATE TABLE usuario_atividade (
   id_usuario INT NOT NULL,
   id_atividade INT NOT NULL,
@@ -53,48 +55,48 @@ CREATE TABLE usuario_atividade (
   hora TIME NULL,
   presenca BOOLEAN NOT NULL,
   PRIMARY KEY (id_usuario, id_atividade),
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE,
-  FOREIGN KEY (id_atividade) REFERENCES atividade(id) ON DELETE CASCADE
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    ON DELETE CASCADE,
+  FOREIGN KEY (id_atividade) REFERENCES atividade(id)
+    ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `competicao` (
-	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
-	`id_evento` INTEGER,
-	`nome` VARCHAR(255),
-	`local` VARCHAR(255),
-	`modalidade` VARCHAR(255),
-	`data_inicio` DATE,
-	`data_final` DATE,
-	`status` VARCHAR(255),
-	PRIMARY KEY(`id`)
-);
+-- Tabela: competicao
+CREATE TABLE competicao (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_evento INT,
+  nome VARCHAR(255),
+  local VARCHAR(255),
+  modalidade VARCHAR(255),
+  data_inicio DATE,
+  data_final DATE,
+  status VARCHAR(255),
+  UNIQUE(id),
+  FOREIGN KEY (id_evento) REFERENCES evento(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `equipe` (
-	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
-	`id_comp` INTEGER,
-	`nome` VARCHAR(255) NOT NULL,
-	PRIMARY KEY(`id`)
-);
+-- Tabela: equipe
+CREATE TABLE equipe (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_comp INT,
+  nome VARCHAR(255) NOT NULL,
+  UNIQUE(id),
+  FOREIGN KEY (id_comp) REFERENCES competicao(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `atleta` (
-	`id_equipe` INTEGER NOT NULL,
-	`id_usuario` INTEGER NOT NULL,
-	PRIMARY KEY(`id_equipe`, `id_usuario`)
-);
-
-ALTER TABLE `competicao`
-ADD FOREIGN KEY (`id_evento`) REFERENCES `evento`(`id`)
-ON UPDATE CASCADE ON DELETE CASCADE;
-
-ALTER TABLE `equipe`
-ADD FOREIGN KEY (`id_comp`) REFERENCES `competicao`(`id`)
-ON UPDATE CASCADE ON DELETE CASCADE;
-
-ALTER TABLE `atleta`
-ADD FOREIGN KEY (`id_equipe`) REFERENCES `equipe`(`id`)
-ON UPDATE CASCADE ON DELETE CASCADE;
-
-ALTER TABLE `atleta`
-ADD FOREIGN KEY (`id_usuario`) REFERENCES `usuario`(`id`)
-ON UPDATE CASCADE ON DELETE CASCADE;
-
+-- Tabela: atleta
+CREATE TABLE atleta (
+  id_equipe INT NOT NULL,
+  id_usuario INT NOT NULL,
+  PRIMARY KEY (id_equipe, id_usuario),
+  FOREIGN KEY (id_equipe) REFERENCES equipe(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

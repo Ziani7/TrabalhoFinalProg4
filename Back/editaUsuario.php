@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
                 $path_img = '/img/' . $novoArqNome;
+                $_SESSION['foto'] = $path_img;
             } else {
                 die("Erro ao mover o arquivo. Verifique permissões da pasta.");
             }
