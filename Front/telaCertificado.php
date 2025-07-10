@@ -52,7 +52,7 @@ if (!$id_evento) {
     </div>
 </div>
 
-<a href="visualizarEventos.php" class="btn btn-secondary position-fixed bottom-0 start-0 m-4 rounded-pill px-4 py-2 shadow">
+<a href="meusEventos.php" class="btn btn-secondary position-fixed bottom-0 start-0 m-4 rounded-pill px-4 py-2 shadow">
     <i class="fas fa-arrow-left"></i> Voltar
 </a>
 

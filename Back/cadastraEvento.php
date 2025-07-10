@@ -10,10 +10,12 @@
         $dateInicio = $_POST['dateInicio'];
         $dateFinal = $_POST['dateFinal'];
         $local = $_POST['local'];
+        $carga_horaria = $_POST['carga_horaria'];
+        $presencamin = $_POST['presencamin'];
         $ativo = 1;
         $usuario_id = $_SESSION['usuario_id'];
 
-        $evento = new Evento($organizacao, $nomeEve, $dateInicio, $dateFinal, $local, $ativo, $usuario_id);
+        $evento = new Evento($organizacao, $nomeEve,$presencamin, $carga_horaria, $dateInicio, $dateFinal, $local, $ativo, $usuario_id);
 
         $eventoDAO = new eventoDAO();
         $eventoDAO->inserir($evento);

@@ -55,6 +55,20 @@ session_start();
                                 <input type="date" id="dateFinal" class="form-control input-with-icon" name="dateFinal">
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label for="carga_horaria" class="form-label">Carga Horario do Evento</label>
+                            <div class="input-group">
+                                <i class="fas fa-hourglass-half input-icon"></i>
+                                <input type="text" id="carga_horaria" class="form-control input-with-icon" name="carga_horaria" placeholder="Carga Horario do Evento">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="presencamin" class="form-label">Presença Minima</label>
+                            <div class="input-group">
+                                <i class="fas fa-user-check input-icon"></i>
+                                <input type="text" id="presencamin" class="form-control input-with-icon" name="presencamin" placeholder="Presença Minima do Evento">
+                            </div>
+                        </div>
 
                         <div class="mb-3">
                             <label for="local" class="form-label">Local do Evento</label>

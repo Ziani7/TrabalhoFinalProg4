@@ -10,15 +10,17 @@
         }
 
         function inserir($evento){
-            $sql = "INSERT INTO evento (nome, data_inicio, data_final, local, organizacao, ativo, usuario_id) VALUES (:nome, :data_inicio, :data_final, :local, :organizacao, :ativo, :usuario_id)";
+            $sql = "INSERT INTO evento (nome, data_inicio, data_final, local, organizacao, carga_horaria, presenca_minima, ativo, usuario_id) VALUES (:nome, :data_inicio, :data_final, :local, :organizacao, :carga_horaria, :presenca_minima, :ativo, :usuario_id)";
             $stmt = $this->conexao->prepare($sql);
             $stmt->bindValue(":nome", $evento->getNome());
             $stmt->bindValue(":data_inicio", $evento->getDataInicial());
             $stmt->bindValue(":data_final", $evento->getDataFinal());
             $stmt->bindValue(":local", $evento->getLocal());
             $stmt->bindValue(":organizacao", $evento->getOrganizacao());
+            $stmt->bindValue(":carga_horaria", $evento->getCarga_horaria());
+            $stmt->bindValue(":presenca_minima", $evento->getPresenca());
             $stmt->bindValue(":ativo", $evento->getAtivo());
-            $stmt->bindValue("usuario_id", $evento->getUsuario_id());
+            $stmt->bindValue(":usuario_id", $evento->getUsuario_id());
             if ($stmt->execute()) {
                 header("Location: ../Front/TelaInicial.php?toast=cadastroSucesso");
             } else {

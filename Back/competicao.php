@@ -44,8 +44,6 @@ public function getIdEvento(){
 public function setIdEvento($id_evento){
     $this->id_evento = $id_evento;
 }
-
-// Getter e Setter para nome
 public function getNome(){
     return $this->nome;
 }

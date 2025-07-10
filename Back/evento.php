@@ -9,11 +9,15 @@ class Evento {
     private $dataFinal;
     private $local;
     private $ativo;
+    private $carga_horaria;
+    private $presenca;
     private $usuario_id;
 
-    public function __construct($organizacao, $nome, $dataInicial, $dataFinal, $local, $ativo, $usuario_id) {
+    public function __construct($organizacao, $nome, $presenca, $carga_horaria, $dataInicial, $dataFinal, $local, $ativo, $usuario_id) {
         $this->organizacao = $organizacao;
         $this->nome = $nome;
+        $this->carga_horaria = $carga_horaria;
+        $this->presenca = $presenca;
         $this->dataInicial = $dataInicial;
         $this->dataFinal = $dataFinal;
         $this->local = $local;
@@ -43,6 +47,18 @@ class Evento {
 
     public function setNome($nome) {
         $this->nome = $nome;
+    }
+    public function getCarga_horaria() {
+        return $this->carga_horaria;
+    }
+    public function setCarga_horaria($carga_horaria) {
+        $this->carga_horaria = $carga_horaria;
+    }
+    public function getPresenca() {
+        return $this->presenca;
+    }
+    public function setPresenca($presenca) {
+        $this->presenca = $presenca;
     }
 
      public function getDataInicial() {
