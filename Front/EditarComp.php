@@ -59,7 +59,7 @@ $eventos = $eventoDAO->getNomeEventos($_SESSION["usuario_id"]);
                                         <?= ($evento['nome']) ?>
                                     </option>
                                 <?php endforeach; ?>
-                            </select>
+                            </select readonly>
                         </div>
                     </div>
 

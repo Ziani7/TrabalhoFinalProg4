@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($id && $idEvento && $nome && $modalidade && $local && $dataInicio && $dataFinal) {
         $competicaoDAO = new competicaoDAO();
-        $sucesso = $competicaoDAO->editar($id, $idEvento, $nome, $modalidade, $local, $dataInicio, $dataFinal, $status);
+        $sucesso = $competicaoDAO->editar($id, $nome, $modalidade, $local, $dataInicio, $dataFinal, $status);
 
         if ($sucesso) {
             header("Location: ../Front/VisualizarCompeticoes.php?sucesso=competicaoEditada");

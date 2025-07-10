@@ -35,6 +35,35 @@
         }
 
     }
+    public function excluir($id){
+    $sql = "delete from competicao where id = :id";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+    return $stmt->execute();
+}
+public function editar($id, $nome, $modalidade, $local, $dataInicio, $dataFim, $status) {
+    $sql = "UPDATE competicao 
+            SET nome = :nome, 
+                modalidade = :modalidade, 
+                local = :local, 
+                data_inicio = :dataInicio, 
+                data_final = :dataFim, 
+                status = :status
+            WHERE id = :id";
+
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->bindValue(":nome", $nome);
+    $stmt->bindValue(":modalidade", $modalidade);
+    $stmt->bindValue(":local", $local);
+    $stmt->bindValue(":dataInicio", $dataInicio);
+    $stmt->bindValue(":dataFim", $dataFim);
+    $stmt->bindValue(":status", $status);
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+    return $stmt->execute();
+}
+
+
 
     public function buscarPorId($id)
 {
