@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../Back/atividadeDAO.php';
+require_once __DIR__ . '/../Back/eventoDAO.php';
 $nome = isset($_SESSION["nome"]) ? $_SESSION["nome"] : "";
 $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 $foto = isset($_SESSION["foto"]) ? $_SESSION["foto"] : "";
@@ -20,6 +21,8 @@ if (empty($foto)) {
 }
     $atividadeDAO = new atividadeDAO();
     $temAtividadesResponsavel = $atividadeDAO->existeAtividadeResponsavel($id_usuario);
+    $eventoDAO = new eventoDAO();
+    $temEvento = $eventoDAO->existeEventoDono($id_usuario);
 
 if(empty($nome)) {
     header("Location: login.html");
@@ -38,7 +41,7 @@ if(empty($nome)) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="Css/estilo.css">
+  <link rel="stylesheet" href="Css/styles.css">
 </head>
 <body>
 <header class="animate-in">
@@ -61,6 +64,9 @@ if(empty($nome)) {
             <li><a class="dropdown-item" href="perfil.php?id_usuario=<?php echo $_SESSION['usuario_id'];?>"><i class="fas fa-user me-2"></i>Meu Perfil</a></li>
             <?php if ($temAtividadesResponsavel): ?>
                 <li><a class="dropdown-item" href="minhasAtividades.php"><i class="fas fa-clipboard-list me-2"></i>Minhas Atividades</a></li>
+            <?php endif; ?>
+            <?php if ($temEvento): ?>
+                <li><a class="dropdown-item" href="meusEventos.php"><i class="fas fa-tasks me-2"></i>Meus Eventos</a></li>
             <?php endif; ?>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../Back/logout.php"><i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>

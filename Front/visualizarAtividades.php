@@ -57,7 +57,7 @@ $email = $_SESSION["email"] ?? "";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="Css/estilo.css" />
+    <link rel="stylesheet" href="Css/styles.css" />
 </head>
 
 <body>
@@ -139,9 +139,10 @@ $email = $_SESSION["email"] ?? "";
         </div>
     </div>
 
-    <a href="visualizarEventos.php" class="btn-voltar">
-    <i class="fas fa-arrow-left"></i> Voltar
-</a>
+    <a href="TelaInicial.php" id="btnVoltar"
+       class="btn btn-secondary position-fixed bottom-0 start-0 m-4 rounded-pill px-4 py-2 shadow">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
 
 </body>
 

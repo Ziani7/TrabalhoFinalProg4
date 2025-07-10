@@ -16,7 +16,7 @@ if(!isset($_SESSION['login'])){
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="js/validaForm.js"></script>
-    <link rel="stylesheet" href="Css/estilo.css">
+    <link rel="stylesheet" href="Css/styles.css">
 </head>
 <body>
 <div class="container py-5">
@@ -83,9 +83,6 @@ if(!isset($_SESSION['login'])){
 
                 <div class="row">
                     <div class="col-12 d-flex justify-content-end gap-2">
-                        <a href="telaInicial.php" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Voltar
-                        </a>
                         <button type="submit" class="btn btn-primary" name="button">
                             <i class="fas fa-save me-2"></i>Atualizar
                         </button>
@@ -94,6 +91,10 @@ if(!isset($_SESSION['login'])){
             </form>
         </div>
     </div>
+    <a href="TelaInicial.php" id="btnVoltar"
+       class="btn btn-secondary position-fixed bottom-0 start-0 m-4 rounded-pill px-4 py-2 shadow">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
 </div>
 </body>
 </html>

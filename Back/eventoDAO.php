@@ -72,6 +72,24 @@ public function excluir($id) {
     $stmt->bindValue(":id", $id, PDO::PARAM_INT);
     return $stmt->execute();
 }
+        function existeEventoDono($id_usuario)
+        {
+            $sql = "SELECT COUNT(*) as total FROM evento WHERE usuario_id = :id_usuario";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(":id_usuario", $id_usuario);
+            $stmt->execute();
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $resultado['total'] > 0;
+        }
+
+        function eventoPorDono($id_usuario)
+        {
+            $sql = "SELECT * FROM evento WHERE usuario_id = :id_usuario ORDER BY data_final ASC";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(":id_usuario", $id_usuario);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 }
 
 

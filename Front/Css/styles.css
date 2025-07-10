@@ -1,3 +1,6 @@
+
+
+
 body {
     background: linear-gradient(135deg, #0B1120 0%, #1E3A8A 100%);
     min-height: 100vh;
@@ -429,3 +432,4 @@ select.form-control {
 select.form-control.input-with-icon {
     padding-left: 40px;
 }
+
