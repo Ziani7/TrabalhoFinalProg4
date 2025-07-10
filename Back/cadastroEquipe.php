@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $equipe = new Equipe($id_comp, $nome);
-
-    $resultado = $equipeDAO->inserir($equipe);
+    $atletas = $_POST['cpfAtleta'];
+    $resultado = $equipeDAO->inserir($equipe, $atletas);
 
     if ($resultado) {
         $_SESSION['sucesso'] = "Equipe cadastrada com sucesso!";

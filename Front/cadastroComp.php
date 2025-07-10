@@ -98,9 +98,6 @@
                                             placeholder="Nome do time" required>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-secondary w-100 mb-3" onclick="adicionarTime()">
-                                    <i class="fas fa-plus me-2"></i>Adicionar mais times
-                                </button>
                             </div>
 
                             <div class="d-grid gap-2">

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once '../Back/atletaDAO.php';
 include_once '../Back/equipeDAO.php';
 
 if (!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
@@ -8,14 +9,15 @@ if (!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
 }
 
 $equipeDAO = new equipeDAO();
-$id_competicao = $_GET['id'] ?? null;
+$atletaDAO = new atletaDAO();
+$id_equipe = $_GET['id'] ?? null;
 
-if (!$id_competicao) {
-    echo "<div class='alert alert-danger'>ID da competição não fornecido.</div>";
+if (!$id_equipe) {
+    echo "<div class='alert alert-danger'>ID da equipe não fornecido.</div>";
     exit;
 }
 
-$equipes = $equipeDAO->listarPorCompeticao($id_competicao);
+$atletas = $atletaDAO->listarPorEquipe($id_equipe);
 
 $nome = $_SESSION["nome"];
 $email = $_SESSION["email"] ?? "";
@@ -41,38 +43,26 @@ $email = $_SESSION["email"] ?? "";
             <div class="col-12">
                 <div class="card animate-in">
                     <div class="card-header">
-                        <h3 class="text-center">Equipes inscritas</h3>
+                        <h3 class="text-center">Atletas inscritos</h3>
                     </div>
                     <div class="card-body p-4">
-                        <?php if (empty($equipes)): ?>
+                        <?php if (empty($atletas)): ?>
                             <div class="alert alert-info">
                                 <i class="fas fa-info-circle me-2"></i>
-                                Nenhuma equipe cadastrada nesta competição.
+                                Nenhum atleta cadastrado nessa equipe.
                             </div>
                         <?php else: ?>
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Nome da Equipe</th>
+                                            <th>Nome do atleta</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($equipes as $equipe): ?>
+                                        <?php foreach ($atletas as $atleta): ?>
                                             <tr>
-                                                <td><?php echo ($equipe['nome']); ?></td>
-                                                <td>
-                                                    <a href="visualizarAtletas.php?id=<?php echo $equipe['id'];?>"
-                                                        class="btn btn-sm btn-primary" title="Detalhes">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-
-                                                    <a href="../Back/excluirEquipe.php?id=<?=$equipe['id']; ?>&id_comp=<?= $id_competicao ?>"
-                                                        class="btn btn-sm btn-danger" title="Excluir"
-                                                        onclick="return confirm('Tem certeza que deseja excluir esta equipe?')">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </td>
+                                                <td><?php echo ($atleta); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
