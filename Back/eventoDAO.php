@@ -37,10 +37,11 @@
             return $eventos;
         }
 
-        function getNomeEventos()
+        function getNomeEventos($id_dono)
         {
-            $sql = "SELECT id, nome FROM evento";
+            $sql = "SELECT id, nome FROM evento where usuario_id = :usuario_id ";
             $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue("usuario_id", $id_dono);
             $stmt->execute();
             $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $eventos;

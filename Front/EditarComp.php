@@ -19,7 +19,7 @@ if (!$competicao) {
 }
 
 $eventoDAO = new eventoDAO();
-$eventos = $eventoDAO->getNomeEventos();
+$eventos = $eventoDAO->getNomeEventos($_SESSION["usuario_id"]);
 ?>
 
 <!DOCTYPE html>

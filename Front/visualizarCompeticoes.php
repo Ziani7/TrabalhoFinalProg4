@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once '../Back/competicaoDAO.php';
+include_once '../Back/eventoDAO.php';
 
 if (!isset($_SESSION["nome"]) || empty($_SESSION["nome"])) {
     header("Location: login.html");
@@ -96,18 +97,23 @@ $email = $_SESSION["email"] ?? "";
                                                         class="btn btn-sm btn-primary" title="Detalhes">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-                                                        <?php if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "organizador"): ?>
-                                                            <a href="EditarComp.php?id=<?= $competicao['id'] ?>"
-                                                                class="btn btn-sm btn-warning" title="Editar">
-                                                                <i class="fas fa-edit"></i>
-                                                            </a>
-                                                            <a href="../Back/excluirCompeticao.php?id=<?= $competicao['id']; ?>"
-                                                                class="btn btn-sm btn-danger" title="Excluir"
-                                                                onclick="return confirm('Tem certeza que deseja excluir esta competição?')">
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
+                                                    <?php
+                                                    $eventoDAO = new EventoDAO();
+                                                    $eventos = $eventoDAO->getNomeEventos($_SESSION["usuario_id"]);
+                                                    $evento = $eventos[0] ?? null;
+                                                    $evento_id = $evento['id'] ?? null;
 
-                                                        <?php endif; ?>
+                                                    if ($competicao['id_evento'] == $evento_id): ?>
+                                                        <a href="EditarComp.php?id=<?= $competicao['id'] ?>"
+                                                            class="btn btn-sm btn-warning" title="Editar">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a href="../Back/excluirCompeticao.php?id=<?= $competicao['id']; ?>"
+                                                            class="btn btn-sm btn-danger" title="Excluir"
+                                                            onclick="return confirm('Tem certeza que deseja excluir esta competição?')">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

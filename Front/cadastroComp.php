@@ -1,3 +1,6 @@
+<?php 
+session_start()
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -35,7 +38,7 @@
                                         <?php
                                         include_once "../Back/eventoDAO.php";
                                         $eventoDAO = new eventoDAO();
-                                        $eventos = $eventoDAO->getNomeEventos();
+                                        $eventos = $eventoDAO->getNomeEventos($_SESSION["usuario_id"]);
                                         foreach ($eventos as $evento):
                                             echo "<option value='{$evento['id']}'>{$evento['nome']}</option>";
                                         endforeach;

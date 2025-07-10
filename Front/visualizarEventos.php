@@ -68,7 +68,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                                                         class="btn btn-sm btn-primary" title="Detalhes">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-                                                    <?php if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "organizador"): ?>
+                                                    <?php if ($evento['usuario_id']==$_SESSION["usuario_id"]): ?>
                                                         <a href="Editareve.php?id=<?php echo $evento['id']; ?>"
                                                             class="btn btn-sm btn-warning" title="Editar">
                                                             <i class="fas fa-edit"></i>
