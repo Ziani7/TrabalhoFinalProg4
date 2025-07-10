@@ -35,5 +35,25 @@
         }
 
     }
+
+    public function buscarPorId($id)
+{
+    try {
+        $sql = "SELECT * FROM competicao WHERE id = :id";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Erro ao buscar competição por ID: " . $e->getMessage();
+        return false;
+    }
+}
+
 }
 
