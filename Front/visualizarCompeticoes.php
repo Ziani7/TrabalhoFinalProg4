@@ -95,6 +95,7 @@ $email = $_SESSION["email"] ?? "";
                                                     <a href="visualizarEquipes.php?id=<?php echo $competicao['id']; ?>"
                                                         class="btn btn-sm btn-primary" title="Detalhes">
                                                         <i class="fas fa-eye"></i>
+                                                    </a>
                                                         <?php if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "organizador"): ?>
                                                             <a href="EditarComp.php?id=<?= $competicao['id'] ?>"
                                                                 class="btn btn-sm btn-warning" title="Editar">

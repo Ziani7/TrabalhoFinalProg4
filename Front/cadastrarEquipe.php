@@ -63,12 +63,44 @@ if (!$id_comp) {
                                 </div>
                             </div>
 
+                            <div id="cpf-container">
+                                <div class="mb-3">
+                                    <label class="form-label">CPF do atleta:</label>
+                                    <div class="input-group">
+                                        <i class="fas fa-users input-icon"></i>
+                                        <input type="text" name="cpfAtleta[]" class="form-control input-with-icon"
+                                            placeholder="CPF do atleta" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-secondary mb-3" onclick="adicionarCampoCPF()">
+                                <i class="fas fa-plus me-1"></i>Adicionar atleta
+                            </button>
+
                             <div class="d-grid gap-2 mt-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-save me-2"></i>Cadastrar Equipe
                                 </button>
                             </div>
                         </form>
+
+                        <script>
+                            function adicionarCampoCPF() {
+                                const container = document.getElementById('cpf-container');
+                                const novoCampo = document.createElement('div');
+                                novoCampo.classList.add('mb-3');
+                                novoCampo.innerHTML = `
+                                                        <label class="form-label">CPF do atleta:</label>
+                                                        <div class="input-group">
+                                                            <i class="fas fa-users input-icon"></i>
+                                                            <input type="text" name="cpfAtleta[]" class="form-control input-with-icon"
+                                                                placeholder="CPF do atleta" />
+                                                        </div>
+                                                    `;
+                                container.appendChild(novoCampo);
+                            }
+                        </script>
 
                     </div>
                 </div>
