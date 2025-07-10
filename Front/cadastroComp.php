@@ -89,14 +89,6 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Times Participantes</label>
-                                <div id="timesContainer">
-                                    <div class="input-group mb-2">
-                                        <i class="fas fa-users input-icon"></i>
-                                        <input type="text" class="form-control input-with-icon" name="times[]"
-                                            placeholder="Nome do time" required>
-                                    </div>
                                 </div>
                             </div>
 

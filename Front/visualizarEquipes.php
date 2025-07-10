@@ -62,16 +62,17 @@ $email = $_SESSION["email"] ?? "";
                                             <tr>
                                                 <td><?php echo ($equipe['nome']); ?></td>
                                                 <td>
-                                                    <a href="visualizarAtletas.php?id=<?php echo $equipe['id'];?>"
+                                                    <a href="visualizarAtletas.php?id=<?php echo $equipe['id']; ?>"
                                                         class="btn btn-sm btn-primary" title="Detalhes">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-
-                                                    <a href="../Back/excluirEquipe.php?id=<?=$equipe['id']; ?>&id_comp=<?= $id_competicao ?>"
-                                                        class="btn btn-sm btn-danger" title="Excluir"
-                                                        onclick="return confirm('Tem certeza que deseja excluir esta equipe?')">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
+                                                    <?php if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "organizador"): ?>
+                                                        <a href="../Back/excluirEquipe.php?id=<?= $equipe['id']; ?>&id_comp=<?= $id_competicao ?>"
+                                                            class="btn btn-sm btn-danger" title="Excluir"
+                                                            onclick="return confirm('Tem certeza que deseja excluir esta equipe?')">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
